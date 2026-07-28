@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piotr Matejuk — hipnoterapeuta, psychotraumatolog, terapeuta psychodeliczny</title>
+<meta name="description" content="Hipnoterapeuta, psychotraumatolog i terapeuta psychodeliczny. Czternaście lat pracy klinicznej z ludzkim umysłem. Założyciel Centrum Terapii Psychodelicznych SACRUM, współtwórca Profesjonalnej Szkoły Hipnoterapii, autor „Autohipnozy”.">
+<meta property="og:title" content="Piotr Matejuk — hipnoterapeuta, psychotraumatolog, terapeuta psychodeliczny">
+<meta property="og:description" content="Czternaście lat pracy z ludzkim umysłem, klinicznie i bez skrótów.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #0E100F; color: #14171A; font-family: 'Instrument Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #2C4A3B; text-decoration: none; }
+  a:hover { color: #14171A; }
+  ::selection { background: #2C4A3B; color: #F3F0E9; }
+  @keyframes pm-kenburns { from { transform: scale(1.02); } to { transform: scale(1.1); } }
+  @keyframes pm-lift { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  @keyframes pm-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes pm-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  @media (max-width: 1060px) { .nav-links { display: none !important; } .nav-mobile { display: flex !important; } }
+  .nav-mobile { display: none; }
+  .nav-mobile::-webkit-scrollbar { display: none; }
+  [data-split] { display: grid; grid-template-columns: 1fr; gap: 32px; }
+  [data-hero] { display: grid; grid-template-columns: 1fr; }
+  @media (min-width: 900px) {
+    [data-split] { grid-template-columns: minmax(220px, 0.5fr) minmax(0, 1.5fr); gap: clamp(32px, 6vw, 90px); }
+    [data-hero] { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); }
+    [data-hero-rev] { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
+  }
+</style>
+</helmet>
+
+<div style="background:#F3F0E9;overflow-x:hidden">
+
+<div data-progress="" style="position:fixed;top:0;left:0;right:0;height:2px;background:#7C9A87;transform:scaleX(0);transform-origin:left;z-index:60"></div>
+
+<nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 28px;background:rgba(244,241,234,0.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(20,23,26,0.1)">
+  <a href="#hero" style="font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.03em;font-size:20px;letter-spacing:0.02em;color:#14171A;white-space:nowrap">Piotr Matejuk</a>
+  <div class="nav-links" style="display:flex;align-items:center;gap:22px;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap">
+    <a href="#o-mnie" style="color:rgba(20,23,26,0.6)" style-hover="color:#14171A">O mnie</a>
+    <a href="#projekty" style="color:rgba(20,23,26,0.6)" style-hover="color:#14171A">Projekty</a>
+    <a href="#psychodeliki" style="color:rgba(20,23,26,0.6)" style-hover="color:#14171A">Psychodeliki</a>
+    <a href="#ksiazki" style="color:rgba(20,23,26,0.6)" style-hover="color:#14171A">Książki</a>
+    <a href="#warsztaty" style="color:rgba(20,23,26,0.6)" style-hover="color:#14171A">Szkolenia</a>
+    <a href="#media" style="color:rgba(20,23,26,0.6)" style-hover="color:#14171A">Media</a>
+    <a href="#film" style="color:rgba(20,23,26,0.6)" style-hover="color:#14171A">Film</a>
+    <a href="#mentoring" style="color:rgba(20,23,26,0.6)" style-hover="color:#14171A">Mentoring</a>
+    <a href="#kontakt" style="padding:10px 20px;background:#14171A;color:#F3F0E9" style-hover="background:#2C4A3B">Kontakt</a>
+  </div>
+</nav>
+<div class="nav-mobile" style="position:sticky;top:53px;z-index:49;gap:20px;overflow-x:auto;scrollbar-width:none;padding:12px 20px;background:rgba(244,241,234,0.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(20,23,26,0.1);font-size:12.5px;letter-spacing:0.08em;text-transform:uppercase">
+  <a href="#o-mnie" style="color:rgba(20,23,26,0.62);white-space:nowrap">O mnie</a>
+  <a href="#projekty" style="color:rgba(20,23,26,0.62);white-space:nowrap">Projekty</a>
+  <a href="#psychodeliki" style="color:rgba(20,23,26,0.62);white-space:nowrap">Psychodeliki</a>
+  <a href="#ksiazki" style="color:rgba(20,23,26,0.62);white-space:nowrap">Książki</a>
+  <a href="#warsztaty" style="color:rgba(20,23,26,0.62);white-space:nowrap">Szkolenia</a>
+  <a href="#media" style="color:rgba(20,23,26,0.62);white-space:nowrap">Media</a>
+  <a href="#film" style="color:rgba(20,23,26,0.62);white-space:nowrap">Film</a>
+  <a href="#mentoring" style="color:rgba(20,23,26,0.62);white-space:nowrap">Mentoring</a>
+  <a href="#kontakt" style="color:#2C4A3B;white-space:nowrap">Kontakt</a>
+</div>
+
+<section id="hero" data-screen-label="Hero" style="background:#F4F1EA;color:#14171A;padding:0">
+  <div style="max-width:1400px;margin:0 auto;align-items:stretch;min-height:88vh" data-hero="true">
+    <div style="display:flex;flex-direction:column;justify-content:center;gap:34px;padding:110px 60px 110px 44px">
+      <div data-reveal="" style="display:flex;align-items:center;gap:14px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#2C4A3B">
+        <span style="width:38px;height:1px;background:#2C4A3B;display:block;transform-origin:left;animation:pm-line 900ms cubic-bezier(.22,.61,.36,1) 300ms both"></span>
+        <span>WARSZAWA · PRAKTYKA OD 2012 R.</span>
+      </div>
+      <h1 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;font-size:clamp(52px,7.4vw,108px);line-height:0.92;letter-spacing:-0.035em"><span style="display:block;animation:pm-lift 1100ms cubic-bezier(.22,.61,.36,1) both">Piotr</span><span style="display:block;animation:pm-lift 1100ms cubic-bezier(.22,.61,.36,1) 140ms both">Matejuk</span></h1>
+      <p data-reveal="" style="margin:0;max-width:36ch;font-size:clamp(19px,1.5vw,24px);line-height:1.5;color:#3C3D38;text-wrap:pretty">Trener, mentor, psychotraumatolog, terapeuta psychodeliczny, autor.&nbsp;<strong style="font-weight: 500; color: rgb(20, 23, 26);">Czternaście lat pracy z ludzkim umysłem</strong> — terapeutycznie, technologicznie i biznesowo.</p>
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:10px 8px;max-width:52ch">
+        <span style="padding:7px 14px;border:1px solid rgba(20,23,26,0.18);font-size:12.5px;letter-spacing:0.04em;color:#4A4B46">Psychotraumatolog</span>
+        <span style="padding:7px 14px;border:1px solid rgba(20,23,26,0.18);font-size:12.5px;letter-spacing:0.04em;color:#4A4B46">Trener i mentor</span>
+        <span style="padding:7px 14px;border:1px solid rgba(20,23,26,0.18);font-size:12.5px;letter-spacing:0.04em;color:#4A4B46">Doktorant, IP PAN</span>
+        <span style="padding:7px 14px;border:1px solid rgba(20,23,26,0.18);font-size:12.5px;letter-spacing:0.04em;color:#4A4B46">Autor</span>
+        <span style="padding:7px 14px;border:1px solid rgba(20,23,26,0.18);font-size:12.5px;letter-spacing:0.04em;color:#4A4B46">Dyrektor CIEŃ Festiwalu</span>
+      </div>
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:6px">
+        <a href="#kontakt" style="padding:16px 32px;background:#14171A;color:#F3F0E9;font-size:14px;letter-spacing:0.04em" style-hover="background:#2C4A3B">Napisz do mnie</a>
+        <a href="#projekty" style="padding:16px 32px;border:1px solid rgba(20,23,26,0.3);color:#14171A;font-size:14px;letter-spacing:0.04em" style-hover="background:#14171A;color:#F3F0E9">Poznaj projekty</a>
+      </div>
+    </div>
+    <div style="position:relative;min-width:0;overflow:hidden;min-height:60vh;height:100%;background:#EDE9E1">
+      <img src="assets/piotr-portret.png" alt="Piotr Matejuk" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;filter:saturate(0.92) contrast(1.03);animation:pm-kenburns 26s ease-in-out infinite alternate">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,#F4F1EA 0%,rgba(244,241,234,0.75) 14%,rgba(244,241,234,0) 46%)"></div>
+    </div>
+  </div>
+</section>
+
+
+
+<section data-screen-label="Afiliacje" style="background:#14171A;color:#F3F0E9;padding:34px 44px">
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:14px 34px">
+    <span style="font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgb(124, 154, 135);">Wykształcenie i afiliacje</span>
+    <span style="font-size: 14.5px; letter-spacing: 0.03em; color: rgba(243, 240, 233, 0.82);">Uniwersytet Warszawski&nbsp; &nbsp; Szkoła Główna Handlowa.&nbsp; &nbsp; &nbsp;Instytut Psychologii PAN</span>
+    <span style="font-size: 14.5px; letter-spacing: 0.03em; color: rgba(243, 240, 233, 0.82);">Integrative Psychiatry Institute</span>
+    <span style="font-size: 14.5px; letter-spacing: 0.03em; color: rgba(243, 240, 233, 0.82);">MAPS</span>
+    <span style="font-size: 14.5px; letter-spacing: 0.03em; color: rgba(243, 240, 233, 0.82);">Center for Medicinal Mindfulness</span>
+    <span style="font-size: 14.5px; letter-spacing: 0.03em; color: rgba(243, 240, 233, 0.82);"><span style="letter-spacing: 0.435px;">DMTx</span></span>
+  </div><span style="font-size:14.5px;letter-spacing:0.03em;color:rgba(243,240,233,0.82)"></span>
+</section><section id="o-mnie" data-screen-label="O mnie" style="background:#F3F0E9;padding:clamp(80px,10vw,150px) 44px">
+  <div style="max-width:1180px;margin:0 auto;" data-split="true">
+    <div>
+      <div data-reveal="" style="position:sticky;top:110px">
+        <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#2C4A3B;margin-bottom:18px">01 — O mnie</div>
+        <h2 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;font-size:clamp(30px,3vw,46px);line-height:1.06;letter-spacing:-0.025em;color:#14171A;text-wrap:balance">Robię to, co mam udokumentowane</h2>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <p data-reveal="" style="margin:0;font-size:clamp(20px,1.7vw,26px);line-height:1.5;color:#14171A;text-wrap:pretty"><strong style="font-weight:500;color:#14171A">Wsparciem emocjonalnym&nbsp;zajmuję się od czternastu lat.</strong> Zaczynałem od pracy indywidualnej i grupowej, dziś współtworzę Profesjonalną Szkołę Hipnoterapii. Równolegle robię doktorat w Instytucie Psychologii PAN i pracuję <strong style="font-weight:500;color:#14171A">na styku hipnoterapii i terapii wspieranej psychodelikami</strong>.</p>
+      <p data-reveal="" style="margin:0;font-size:17px;line-height:1.72;color:#4A4B46;max-width:64ch;text-wrap:pretty">Uczyłem się tego tam, gdzie się to odbywa na szeroką skalę: <strong style="font-weight: 500; color: rgb(20, 23, 26);">Integrative Psychiatry Institute</strong> w Boulder, Colorado (Psychedelic-Assisted Therapy Provider), <strong style="font-weight: 500; color: rgb(20, 23, 26);">Psychedelic Sitters School</strong> (Credentialed Cannabis-Assisted Psychedelic Therapy Specialist), trening&nbsp;<strong style="font-weight: 500; color: rgb(20, 23, 26);">MAPS</strong> z terapii PTSD wspieranej MDMA. Współpracuję z <b>Center for Medicinal Mindfulness</b> Daniela McQueena, Fundacją Psychedelic Shine i <b>DMTx</b>.</p>
+      <p data-reveal="" style="margin:0;font-size:17px;line-height:1.72;color:#4A4B46;max-width:64ch;text-wrap:pretty">Jako psychotraumatolog i interwent kryzysowy <strong style="font-weight: 500; color: rgb(20, 23, 26);">pracuję z ludźmi w momentach, w których psychika jest najbardziej odsłonięta</strong>. Napisałem „Autohipnozę: Bliskie spotkania z samym sobą”. Prowadziłem wykłady m.in. na Śląskim Uniwersytecie Medycznym, Uniwersytecie Jagiellońskim i na Konferencji Terapii i Integracji Psychodelicznej Holomind. <b>Założyłem Centrum Terapii SACRUM.</b></p>
+      <p data-reveal="" style="margin:0;font-size:17px;line-height:1.72;color:#4A4B46;max-width:64ch;text-wrap:pretty">Poza gabinetem prowadzę <b>markę streetwear Egoisn't</b>, wymyśliłem i prowadzę <b>CIEŃ Festiwal</b>, wspieram klientów w budowaniu marki osobistej w obszarze zdrowia psychicznego. <strong style="font-weight: 500; color: rgb(20, 23, 26);">Wiele projektów naraz to u mnie norma, nie wyjątek.</strong></p>
+
+      <div data-reveal="" style="margin-top:22px;padding-top:34px;border-top:1px solid rgba(20,23,26,0.14)">
+        <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#8A8A80;margin-bottom:22px">Wykształcenie i afiliacje</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0 44px">
+          <div style="display:flex;flex-direction:column">
+            <div style="padding:14px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:15.5px;line-height:1.5;color:#14171A">Doktorant — Instytut Psychologii PAN</div>
+            <div style="padding:14px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:15.5px;line-height:1.5;color:#14171A">Szkoła Główna Handlowa</div>
+            <div style="padding:14px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:15.5px;line-height:1.5;color:#14171A">Uniwersytet Warszawski</div>
+            <div style="padding:14px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:15.5px;line-height:1.5;color:#14171A">Integrative Psychiatry Institute, Boulder CO — Psychedelic-Assisted Therapy Provider</div>
+            <div style="padding:14px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:15.5px;line-height:1.5;color:#14171A">Psychedelic Sitters School — Credentialed Cannabis-Assisted Psychedelic Therapy Specialist</div>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <div style="padding:14px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:15.5px;line-height:1.5;color:#14171A">MAPS — MDMA-assisted therapy for PTSD</div>
+            <div style="padding:14px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:15.5px;line-height:1.5;color:#14171A">Współpraca — Center for Medicinal Mindfulness, Psychedelic Shine, DMTx</div>
+            <div style="padding:14px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:15.5px;line-height:1.5;color:#14171A">Wykłady — SUM, UJ, Konferencja Terapii i Integracji Psychodelicznej</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projekty" data-screen-label="Projekty" style="background:#0E100F;color:#F3F0E9;padding:clamp(80px,10vw,150px) 44px">
+  <div style="max-width:1180px;margin:0 auto">
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(44px,5vw,72px)">
+      <div>
+        <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#7C9A87;margin-bottom:18px">02 — Projekty</div>
+        <h2 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.025em;font-size:clamp(34px,3.6vw,52px);line-height:1.04">Cztery osobne organizmy</h2>
+      </div>
+      <p style="margin:0;max-width:40ch;font-size:16px;line-height:1.7;color:rgba(243,240,233,0.6)">Każdy ma własną domenę, zespół i tempo. Poniżej to, co w nich robię.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:1px;background:rgba(243,240,233,0.14)">
+      <a data-reveal="" href="https://sacrum.life" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:15px;padding:34px 28px 30px;background:#0E100F;color:#F3F0E9;min-height:300px" style-hover="background:#151917">
+        <div style="display:flex;align-items:center;justify-content:center;min-height:76px;margin-bottom:4px"><img src="assets/sacrum-black.svg" alt="SACRUM" style="width:min(200px,100%);height:auto;object-fit:contain;filter:invert(1)"></div>
+        <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7C9A87">Założyciel</span>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:rgba(243,240,233,0.68);flex:1"><strong style="font-weight:500;color:#F3F0E9">Centrum Terapii Psychodelicznych — mój główny projekt.</strong> Terapia wspierana psychodelikami i hipnoterapia, praca indywidualna i grupowa, warsztaty i kursy dla tych, którzy chcą wejść głębiej.</p>
+        <span style="font-size:14px;letter-spacing:0.03em;color:#F3F0E9;border-bottom:1px solid rgba(243,240,233,0.35);padding-bottom:3px;align-self:flex-start">sacrum.life ↗</span>
+      </a>
+      <a data-reveal="" href="https://hipnoterapia.edu.pl" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:15px;padding:34px 28px 30px;background:#0E100F;color:#F3F0E9;min-height:300px" style-hover="background:#151917">
+        <div style="display:flex;align-items:center;justify-content:center;min-height:76px;margin-bottom:4px"><img src="assets/psh-logo-white.png" alt="Profesjonalna Szkoła Hipnoterapii" style="width:min(200px,100%);height:auto;object-fit:contain"></div>
+        <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7C9A87">Współtwórca</span>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:rgba(243,240,233,0.68);flex:1">Uczymy hipnoterapii tych, którzy będą z niej żyć: <strong style="font-weight:500;color:#F3F0E9">szkolenia, certyfikacja, materiały kliniczne</strong>.</p>
+        <span style="font-size:14px;letter-spacing:0.03em;color:#F3F0E9;border-bottom:1px solid rgba(243,240,233,0.35);padding-bottom:3px;align-self:flex-start">hipnoterapia.edu.pl ↗</span>
+      </a>
+      <a data-reveal="" href="https://cienfestiwal.com" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:15px;padding:34px 28px 30px;background:#0E100F;color:#F3F0E9;min-height:300px" style-hover="background:#151917">
+        <div style="display:flex;align-items:center;justify-content:center;min-height:76px;margin-bottom:4px"><img src="assets/cien-white.png" alt="CIEŃ Festiwal" style="height:80px;width:auto;object-fit:contain"></div>
+        <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7C9A87">Dyrektor</span>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:rgba(243,240,233,0.68);flex:1">Mój festiwal — <strong style="font-weight:500;color:#F3F0E9">kultura alternatywna spotyka psychologię</strong> i pracę ze świadomością.</p>
+        <span style="font-size:14px;letter-spacing:0.03em;color:#F3F0E9;border-bottom:1px solid rgba(243,240,233,0.35);padding-bottom:3px;align-self:flex-start">cienfestiwal.com ↗</span>
+      </a>
+      <a data-reveal="" href="https://egoisnt.com" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:15px;padding:34px 28px 30px;background:#0E100F;color:#F3F0E9;min-height:300px" style-hover="background:#151917">
+        <div style="display:flex;align-items:center;justify-content:center;min-height:76px;margin-bottom:4px"><img src="assets/egoisnt-white.png" alt="Egoisn't" style="width:min(190px,100%);height:auto;object-fit:contain"></div>
+        <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7C9A87">Twórca</span>
+        <p style="margin:0;font-size:16px;line-height:1.7;color:rgba(243,240,233,0.68);flex:1">Streetwear dla psychonautów i ludzi od psychologii, <strong style="font-weight:500;color:#F3F0E9">z przymrużeniem oka do własnego ego</strong>.</p>
+        <span style="font-size:14px;letter-spacing:0.03em;color:#F3F0E9;border-bottom:1px solid rgba(243,240,233,0.35);padding-bottom:3px;align-self:flex-start">egoisnt.com ↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="psychodeliki" data-screen-label="Terapia psychodeliczna" style="background:#F3F0E9;padding:0">
+  <div style="max-width:1400px;margin:0 auto;align-items:stretch" data-hero="true" data-hero-rev="true">
+    <div style="display:grid;min-width:0;overflow:hidden;filter:saturate(0.9) contrast(1.02)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#EDE9E1;align-self:start">
+        <img src="assets/scena-mikrofon.png" alt="Piotr Matejuk podczas wystąpienia" loading="lazy" style="grid-column:1/-1;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:50% 24%">
+        <img src="assets/warsztat4.jpg" alt="Psychedelic Guide Training — grupa" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 42%">
+        <img src="assets/warsztat9.jpg" alt="Warsztat — praca w kręgu" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 45%">
+        <img src="assets/warsztat6.jpg" alt="Integrative Psychiatry Institute — szkolenie" loading="lazy" style="grid-column:1/-1;width:100%;aspect-ratio:3/2;object-fit:cover;object-position:50% 40%">
+        <img src="assets/warsztat11.jpg" alt="Wykład na festiwalu — namiot główny" loading="lazy" style="grid-column:1/-1;width:100%;aspect-ratio:5/2;object-fit:cover;object-position:50% 50%">
+      </div>
+    </div>
+    <div style="padding:clamp(70px,8vw,130px) clamp(28px,5vw,80px);display:flex;flex-direction:column;gap:26px;justify-content:center">
+      <div data-reveal="" style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#2C4A3B">03 — Terapia psychodeliczna</div>
+      <h2 data-reveal="" style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;font-size:clamp(34px,3.8vw,56px);line-height:1.03;letter-spacing:-0.028em;color:#14171A">Praca kliniczna,<br>a nie undegroud.</h2>
+      <p data-reveal="" style="margin:0;font-size:18px;line-height:1.68;color:#4A4B46;max-width:58ch;text-wrap:pretty"><strong style="font-weight:500;color:#14171A">Pracuję z psychodelikami klinicznie i legalnie.</strong> To narzędzie osadzone w przygotowaniu, sesji i integracji — nie doświadczenie samo w sobie. Tym różni się moje podejście od rekreacyjno-duchowego nurtu, który narósł wokół tego tematu.</p>
+      <div data-reveal="" style="display:flex;flex-direction:column;margin-top:6px;border-top:1px solid rgba(20,23,26,0.14)">
+        <div style="padding:15px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:16px;color:#14171A">Integrative Psychiatry Institute — Psychedelic-Assisted Therapy Provider</div>
+        <div style="padding:15px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:16px;color:#14171A">Psychedelic Sitters School — Credentialed Cannabis-Assisted Psychedelic Therapy Specialist</div>
+        <div style="padding:15px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:16px;color:#14171A">MAPS — MDMA-assisted therapy for PTSD</div>
+        <div style="padding:15px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:16px;color:#14171A">Center for Medicinal Mindfulness (Daniel McQueen) — współpraca</div>
+        <div style="padding:15px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:16px;color:#14171A">Psychedelic Shine — współpraca</div>
+        <div style="padding:15px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:16px;color:#14171A">DMTx — współpraca</div>
+      </div>
+      <div data-reveal="" style="margin-top:14px;display:flex;flex-direction:column;gap:20px">
+        <span style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#8A8A80">Afiliacje</span>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));align-items:center;justify-items:center;gap:30px 34px">
+          <img src="assets/logo-maps.webp" alt="MAPS — Multidisciplinary Association for Psychedelic Studies" style="height:52px;width:auto;object-fit:contain">
+          <img src="assets/logo-ipi-badge.png" alt="Integrative Psychiatry Institute — Certified Psychedelic Assisted Therapy Provider" style="height:78px;width:auto;object-fit:contain">
+          <img src="assets/logo-cmm.png" alt="Center for Medicinal Mindfulness" style="height:70px;width:auto;object-fit:contain">
+          <img src="assets/logo-shine.png" alt="Psychedelic Shine" style="height:70px;width:auto;object-fit:contain">
+          <img src="assets/logo-dmtx.png" alt="DMTx" style="height:52px;width:auto;object-fit:contain">
+        </div>
+      </div>
+      <div data-reveal="" style="margin-top:22px;padding:26px 28px;background:#14171A;color:#F3F0E9;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px">
+        <div>
+          <div style="font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.03em;font-size:24px;margin-bottom:6px">Szukasz terapii?</div>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:rgba(243,240,233,0.7);max-width:46ch">Terapię indywidualną i grupową prowadzę w SACRUM — tam są terminy i zapisy.</p>
+        </div>
+        <a href="https://sacrum.life" target="_blank" rel="noopener" style="padding:14px 26px;background:#F3F0E9;color:#0E100F;font-size:14px;white-space:nowrap" style-hover="background:#7C9A87">Przejdź do sacrum.life ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ksiazki" data-screen-label="Książki" style="background:#0E100F;color:#F3F0E9;padding:clamp(80px,10vw,150px) 44px">
+  <div style="max-width:1180px;margin:0 auto">
+    <div data-reveal="" style="margin-bottom:clamp(44px,5vw,72px)">
+      <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#7C9A87;margin-bottom:18px">04 — Książki</div>
+      <h2 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.025em;font-size:clamp(34px,3.6vw,52px);line-height:1.04">Piszę o tym, co robię w gabinecie</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,64px)">
+      <div data-reveal="" style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;align-items:start">
+        <image-slot id="pm-book-1" shape="rect" fit="cover" style="width:150px;height:225px" placeholder="Okładka"></image-slot>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7C9A87">Wydana</span>
+          <h3 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.02em;font-size:27px;line-height:1.2">Autohipnoza: Bliskie spotkania z samym sobą</h3>
+          <p style="margin:0;font-size:15.5px;line-height:1.7;color:rgba(243,240,233,0.62)">Wydawnictwo Sensus. W druku, jako ebook i audiobook.</p>
+          <p style="margin:0;font-size:13.5px;line-height:1.6;color:rgba(243,240,233,0.4);border-left:1px solid rgba(243,240,233,0.25);padding-left:12px">[Placeholder — opis książki do wklejenia z materiałów wydawcy]</p>
+          <a href="https://sensus.pl/ksiazki/autohipnoza-bliskie-spotkania-z-samym-soba-piotr-matejuk,autohi.htm" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:4px;padding:13px 24px;background:#F3F0E9;color:#0E100F;font-size:14px" style-hover="background:#7C9A87">Kup na Sensus ↗</a>
+        </div>
+      </div>
+      <div data-reveal="" style="display:flex;flex-direction:column;gap:16px;padding:34px;border:1px solid rgba(243,240,233,0.18)">
+        <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(243,240,233,0.45)">W przygotowaniu</span>
+        <h3 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.02em;font-size:27px;line-height:1.2">Druga książka — o hipnozie klinicznej</h3>
+        <p style="margin:0;font-size:15.5px;line-height:1.7;color:rgba(243,240,233,0.62)">Piszę drugą książkę — tym razem o <strong style="font-weight:500;color:#F3F0E9">hipnozie klinicznej</strong>. Więcej wkrótce.</p>
+        <sc-if value="{{ showNotify }}" hint-placeholder-val="{{ true }}">
+          <form action="{{ formEndpoint }}" method="post" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+            <input type="hidden" name="temat" value="Premiera książki">
+            <input type="email" name="email" required="true" placeholder="Twój email" style="flex:1;min-width:180px;padding:13px 15px;background:transparent;border:1px solid rgba(243,240,233,0.28);color:#F3F0E9;font-family:'Instrument Sans',sans-serif;font-size:14.5px">
+            <button type="submit" style="padding:13px 22px;background:transparent;border:1px solid rgba(243,240,233,0.5);color:#F3F0E9;font-family:'Instrument Sans',sans-serif;font-size:14px;cursor:pointer" style-hover="background:#F3F0E9;color:#0E100F">Powiadom o premierze</button>
+          </form>
+          <p style="margin:0;font-size:12.5px;color:rgba(243,240,233,0.38)">Formularz wysyła dane do endpointu ustawionego w polu „formEndpoint” — do podłączenia z MailerLite.</p>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="warsztaty" data-screen-label="Warsztaty i szkolenia" style="background:#F3F0E9;padding:clamp(80px,10vw,150px) 44px">
+  <div style="max-width:1180px;margin:0 auto;" data-split="true">
+    <div>
+      <div data-reveal="" style="position:sticky;top:110px">
+        <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#2C4A3B;margin-bottom:18px">05 — Warsztaty i szkolenia</div>
+        <h2 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.025em;font-size:clamp(34px,3.6vw,52px);line-height:1.04;color:#14171A">Uczę tylko tego, co faktycznie robię dobrze.</h2>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <p data-reveal="" style="margin:0;font-size:clamp(19px,1.6vw,24px);line-height:1.55;color:#14171A;max-width:56ch;text-wrap:pretty">Jestem trenerem hipnoterapii. Szkolę <strong style="font-weight:500;color:#14171A">praktyków</strong> — przez Profesjonalną Szkołę Hipnoterapii — i prowadzę warsztaty dla <strong style="font-weight:500;color:#14171A">osób spoza branży</strong>, które chcą pracować z własną świadomością.</p>
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;margin-top:6px">
+        <div style="background:#F3F0E9;padding:30px 26px;box-shadow:0 0 0 1px rgba(20,23,26,0.14);display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;justify-content:center;min-height:72px">
+            <img src="assets/logo-sum.jpg" alt="Śląski Uniwersytet Medyczny w Katowicach" loading="lazy" style="max-height:46px;max-width:100%;width:auto;height:auto;object-fit:contain;mix-blend-mode:multiply">
+          </div>
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A8A80">Wykład</div>
+          <div style="font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.03em;font-size:23px;line-height:1.25;color:#14171A">Śląski Uniwersytet Medyczny</div>
+        </div>
+        <div style="background:#F3F0E9;padding:30px 26px;box-shadow:0 0 0 1px rgba(20,23,26,0.14);display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;justify-content:center;min-height:72px">
+            <img src="assets/logo-uj.jpg" alt="Uniwersytet Jagielloński w Krakowie" loading="lazy" style="max-height:58px;max-width:100%;width:auto;height:auto;object-fit:contain;mix-blend-mode:multiply">
+          </div>
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A8A80">Wykład</div>
+          <div style="font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.03em;font-size:23px;line-height:1.25;color:#14171A">Uniwersytet Jagielloński</div>
+        </div>
+        <div style="background:#F3F0E9;padding:30px 26px;box-shadow:0 0 0 1px rgba(20,23,26,0.14);display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;justify-content:center;min-height:72px">
+            <img src="assets/logo-holomind.jpg" alt="HoloMind — Konferencja Terapii i Integracji Psychodelicznej" loading="lazy" style="max-height:72px;max-width:100%;width:auto;height:auto;object-fit:contain;mix-blend-mode:multiply">
+          </div>
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A8A80">Wystąpienie</div>
+          <div style="font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.03em;font-size:23px;line-height:1.25;color:#14171A">Konferencja Terapii i Integracji Psychodelicznej</div>
+        </div>
+      </div>
+      <p data-reveal="" style="margin:0;font-size:17px;line-height:1.72;color:#4A4B46;max-width:62ch;text-wrap:pretty">Budowanie projektów to moja druga pasja. Nie tylko gabinet — <strong style="font-weight:500;color:#14171A">całe ekosystemy</strong>: szkoła, festiwal, marka, centrum terapii. Wszystko wokół świadomości i zmiany.</p>
+      <a data-reveal="" href="https://hipnoterapia.edu.pl" target="_blank" rel="noopener" style="align-self:flex-start;padding:14px 26px;border:1px solid #14171A;color:#14171A;font-size:14px" style-hover="background:#14171A;color:#F3F0E9">Szkolenia dla praktyków — hipnoterapia.edu.pl ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="media" data-screen-label="Media" style="background:#0E100F;color:#F3F0E9;padding:clamp(80px,10vw,150px) 44px">
+  <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,72px);align-items:start">
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:24px;min-width:0">
+      <div>
+        <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#7C9A87;margin-bottom:18px">06 — Media</div>
+        <h2 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.025em;font-size:clamp(34px,3.6vw,52px);line-height:1.04">Hipnoza w mediach — bez sensacji</h2>
+      </div>
+      <p style="margin:0;font-size:17px;line-height:1.72;color:rgba(243,240,233,0.68);max-width:52ch;text-wrap:pretty">Komentuję świat zdrowia psychicznego, odmienne stany świadomości i terapię wspieraną psychodelikami w telewizji, radiu i prasie — <strong style="font-weight: 500; color: rgb(243, 240, 233);">zawsze od strony klinicznej</strong>.</p>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <img src="assets/media-pns-tvp2.jpg" alt="Piotr Matejuk w Pytaniu na Śniadanie, TVP 2 — Hipnoza w psychosomatyce" loading="lazy" style="width:100%;aspect-ratio:16/10;object-fit:cover;object-position:50% 40%;filter:saturate(0.92)">
+        <figcaption style="font-size:12.5px;letter-spacing:0.04em;color:rgba(243,240,233,0.5)">Pytanie na Śniadanie, TVP 2 — „Hipnoza w psychosomatyce”</figcaption>
+      </figure>
+    </div>
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:18px;min-width:0">
+      <span style="font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#7C9A87">Gościnnie w</span>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px">
+      <div style="display:flex;align-items:center;justify-content:center;background:#FFFFFF;padding:18px 20px;min-height:112px;box-shadow:0 0 0 1px rgba(243,240,233,0.16)">
+        <img src="assets/media/tvp2-crop.png" alt="TVP 2 — Pytanie na Śniadanie" loading="lazy" style="max-width:100%;max-height:44px;width:auto;height:auto;object-fit:contain">
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;background:#FFFFFF;padding:18px 20px;min-height:112px;box-shadow:0 0 0 1px rgba(243,240,233,0.16)">
+        <img src="assets/media/tokfm.png" alt="TOK FM" loading="lazy" style="max-width:100%;max-height:66px;width:auto;height:auto;object-fit:contain">
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;background:#FFFFFF;padding:18px 20px;min-height:112px;box-shadow:0 0 0 1px rgba(243,240,233,0.16)">
+        <img src="assets/media/chillizet.jpeg" alt="Chilli ZET" loading="lazy" style="max-width:100%;max-height:72px;width:auto;height:auto;object-fit:contain">
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;background:#FFFFFF;padding:18px 20px;min-height:112px;box-shadow:0 0 0 1px rgba(243,240,233,0.16)">
+        <img src="assets/media/trojka.png" alt="Polskie Radio Program III — Trójka" loading="lazy" style="max-width:100%;max-height:48px;width:auto;height:auto;object-fit:contain">
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;background:#FFFFFF;padding:18px 20px;min-height:112px;box-shadow:0 0 0 1px rgba(243,240,233,0.16)">
+        <img src="assets/media/superexpress.jpeg" alt="Super Express" loading="lazy" style="max-width:100%;max-height:66px;width:auto;height:auto;object-fit:contain">
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;background:#FFFFFF;padding:18px 20px;min-height:112px;box-shadow:0 0 0 1px rgba(243,240,233,0.16)">
+        <img src="assets/media/charaktery.png" alt="Charaktery — magazyn psychologiczny" loading="lazy" style="max-width:100%;max-height:76px;width:auto;height:auto;object-fit:contain">
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;background:#FFFFFF;padding:18px 20px;min-height:112px;box-shadow:0 0 0 1px rgba(243,240,233,0.16)">
+        <img src="assets/media/psychologia.png" alt="Psychologia w Praktyce" loading="lazy" style="max-width:100%;max-height:76px;width:auto;height:auto;object-fit:contain">
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="film" data-screen-label="Film Dream On" style="background:#F3F0E9;padding:clamp(80px,10vw,150px) 44px">
+  <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(36px,5vw,72px);align-items:start">
+    <div data-reveal="" style="min-width:0">
+      <img src="assets/dream-on-poster.png" alt="Plakat filmu Dream On: Hipnoza" loading="lazy" style="width:100%;height:auto;display:block;box-shadow:0 24px 60px rgba(20,23,26,0.22)">
+    </div>
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:24px;min-width:0">
+      <div>
+        <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#2C4A3B;margin-bottom:18px">07 — Film</div>
+        <h2 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.025em;font-size:clamp(34px,3.6vw,52px);line-height:1.04;color:#14171A">Dream On: Hipnoza</h2>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;font-size:13.5px;letter-spacing:0.04em;color:#6B6B63">
+        <span>2025</span><span>·</span><span>59 min</span><span>·</span><span>fabularyzowany dokument</span><span>·</span><span>Polska</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:#14171A;color:#F3F0E9;align-self:flex-start">
+        <span style="font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.03em;font-size:38px;line-height:1">8,2</span>
+        <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(243,240,233,0.7);line-height:1.5">Ocena<br>Filmweb</span>
+      </div>
+      <p style="margin:0;font-size:18px;line-height:1.66;color:#14171A;max-width:52ch;text-wrap:pretty">Prawdziwe historie pacjentów poddanych hipnozie i ludzi, którzy się tym zajmują. Dokument pokazuje <strong style="font-weight:500;color:#14171A">naukowe i psychologiczne kulisy hipnoterapii</strong> — występuję w nim jako hipnoterapeuta.</p>
+      <div style="display:flex;flex-direction:column;border-top:1px solid rgba(20,23,26,0.14)">
+        <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:15.5px;color:#14171A"><span style="color:#8A8A80">Reżyseria</span><span>Bruno Brejt</span></div>
+        <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:15.5px;color:#14171A"><span style="color:#8A8A80">Scenariusz</span><span>Everet Papa</span></div>
+        <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(20,23,26,0.1);font-size:15.5px;color:#14171A"><span style="color:#8A8A80">Produkcja</span><span>Lucid States Development · The Film Ensemble</span></div>
+      </div>
+      <div style="margin-top:6px;padding:30px 32px;background:#2C4A3B;color:#F3F0E9;display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#B9CDBF">Dostęp online</span>
+        <div style="display:flex;align-items:baseline;gap:10px">
+          <span style="font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.03em;font-size:clamp(38px,4vw,54px);line-height:1">39,90 zł</span>
+          <span style="font-size:14px;color:rgba(243,240,233,0.7)">jednorazowo</span>
+        </div>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:rgba(243,240,233,0.82);max-width:40ch">Pełny film, 59 minut. Dostęp po opłaceniu — bez abonamentu.</p>
+        <a href="{{ filmCheckoutUrl }}" target="_blank" rel="noopener" style="align-self:flex-start;padding:15px 30px;background:#F3F0E9;color:#0E100F;font-size:14px;letter-spacing:0.04em" style-hover="background:#B9CDBF">Obejrzyj film</a>
+        <a href="https://www.filmweb.pl/film/Dream+on.+Hipnoza-2025-10105445" target="_blank" rel="noopener" style="font-size:13.5px;color:rgba(243,240,233,0.6);border-bottom:1px solid rgba(243,240,233,0.3);padding-bottom:2px;align-self:flex-start">Karta filmu na Filmwebie ↗</a>
+      </div>
+      <p style="margin:0;font-size:12.5px;line-height:1.6;color:#8A8A80">Link płatności do podmiany (pole „filmCheckoutUrl") — bez podłączonej bramki nie udaję zakupu.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mentoring" data-screen-label="Mentoring 1:1" style="background:#2C4A3B;color:#F3F0E9;padding:clamp(80px,10vw,150px) 44px">
+  <div style="max-width:1180px;margin:0 auto">
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:clamp(40px,5vw,64px)">
+      <div>
+        <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(243,240,233,0.6);margin-bottom:18px">08 — Mentoring</div>
+        <h2 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.025em;font-size:clamp(34px,3.6vw,52px);line-height:1.04">Mentoring 1:1 ze mną</h2>
+      </div>
+      <div style="padding:12px 18px;border:1px solid rgba(243,240,233,0.4);font-size:13px;letter-spacing:0.06em;text-transform:uppercase">To nie jest terapia</div>
+    </div>
+    <p data-reveal="" style="margin:0 0 clamp(40px,5vw,60px);max-width:64ch;font-size:clamp(19px,1.6vw,24px);line-height:1.55;color:rgba(243,240,233,0.9);text-wrap:pretty">Dla osób, które mają <strong style="font-weight:500;color:#F3F0E9">konkretny problem, decyzję albo kierunek</strong> do przepracowania — osobisty albo zawodowy — i chcą przy tym skorzystać z moich czternastu lat pracy terapeutycznej lub biznesowej. <strong style="font-weight:500;color:#F3F0E9">To praca rozwojowa, nie usługa medyczna.</strong></p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:rgba(243,240,233,0.22)">
+      <div data-reveal="" style="background:#2C4A3B;padding:38px 34px;display:flex;flex-direction:column;gap:18px">
+        <h3 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.02em;font-size:28px">Sesja pojedyncza</h3>
+        <div style="display:flex;align-items:baseline;gap:10px">
+          <span style="font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.03em;font-size:54px;line-height:1">1200 zł</span>
+          <span style="font-size:14px;color:rgba(243,240,233,0.65)">/ sesja</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:15.5px;color:rgba(243,240,233,0.82)">
+          <div>Czas trwania: 1,5 h</div>
+          <div>Online lub stacjonarnie — Warszawa, ul. Klaudyny 34C</div>
+        </div>
+      </div>
+      <div data-reveal="" style="background:#25402F;padding:38px 34px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px">
+          <h3 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.02em;font-size:28px">Pakiet 10 sesji</h3>
+          <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#B9CDBF">970 zł / sesja</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:10px">
+          <span style="font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.03em;font-size:54px;line-height:1">9700 zł</span>
+          <span style="font-size:14px;color:rgba(243,240,233,0.65)">/ 10 sesji</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:15.5px;color:rgba(243,240,233,0.82)">
+          <div>10 sesji po 1,5 h</div>
+          <div>Online lub stacjonarnie — Warszawa, ul. Klaudyny 34C</div>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="" style="margin-top:34px;display:flex;flex-wrap:wrap;align-items:center;gap:18px">
+      <a href="#kontakt" style="padding:15px 30px;background:#F3F0E9;color:#0E100F;font-size:14px" style-hover="background:#B9CDBF">Zapytaj o mentoring</a>
+      <span style="font-size:14.5px;color:rgba(243,240,233,0.6)">Formularz kontaktowy, temat: Mentoring.</span>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt" data-screen-label="Kontakt" style="background:#F3F0E9;padding:clamp(80px,10vw,150px) 44px">
+  <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(40px,6vw,90px)">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <div data-reveal="">
+        <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#2C4A3B;margin-bottom:18px">09 — Kontakt</div>
+        <h2 style="margin:0;font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.025em;font-size:clamp(34px,3.6vw,52px);line-height:1.04;color:#14171A">Współpraca, media, szkolenia</h2>
+      </div>
+      <p data-reveal="" style="margin:0;font-size:17.5px;line-height:1.7;color:#4A4B46;max-width:44ch;text-wrap:pretty">Napisz w sprawie <strong style="font-weight:500;color:#14171A">współpracy, wystąpienia, szkolenia lub mentoringu</strong>. Zapisy na terapię nie idą przez ten formularz.</p>
+      <div data-reveal="" style="display:flex;flex-direction:column;border-top:1px solid rgba(20,23,26,0.14);margin-top:6px">
+        <a href="mailto:piotr@sacrum.life" style="padding:16px 0;border-bottom:1px solid rgba(20,23,26,0.1);display:flex;justify-content:space-between;gap:16px;font-size:16px;color:#14171A" style-hover="color:#2C4A3B"><span>Email</span><span>piotr@sacrum.life</span></a>
+        <a href="https://www.instagram.com/piotr.matejuk/" target="_blank" rel="noopener" style="padding:16px 0;border-bottom:1px solid rgba(20,23,26,0.1);display:flex;justify-content:space-between;gap:16px;font-size:16px;color:#14171A" style-hover="color:#2C4A3B"><span>Instagram</span><span>piotr.matejuk ↗</span></a>
+        <a href="https://www.facebook.com/piotr.matejuk.hipnoterapia" target="_blank" rel="noopener" style="padding:16px 0;border-bottom:1px solid rgba(20,23,26,0.1);display:flex;justify-content:space-between;gap:16px;font-size:16px;color:#14171A" style-hover="color:#2C4A3B"><span>Facebook</span><span>Piotr Matejuk ↗</span></a>
+      </div>
+      <div data-reveal="" style="margin-top:14px;padding:26px 28px;background:#14171A;color:#F3F0E9">
+        <div style="font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.03em;font-size:24px;margin-bottom:8px">Szukasz terapii?</div>
+        <p style="margin:0 0 18px;font-size:15px;line-height:1.6;color:rgba(243,240,233,0.7);max-width:44ch">Terapię indywidualną i grupową prowadzę w SACRUM — tam są terminy i zapisy.</p>
+        <a href="https://sacrum.life" target="_blank" rel="noopener" style="display:inline-block;padding:13px 24px;background:#F3F0E9;color:#0E100F;font-size:14px" style-hover="background:#7C9A87">Przejdź do sacrum.life ↗</a>
+      </div>
+    </div>
+    <form data-reveal="" action="{{ formEndpoint }}" method="post" style="display:flex;flex-direction:column;gap:18px">
+      <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A8A80">Imię i nazwisko
+        <input type="text" name="imie" required="true" style="padding:14px 15px;background:transparent;border:1px solid rgba(20,23,26,0.25);color:#14171A;font-family:'Instrument Sans',sans-serif;font-size:16px;letter-spacing:0" style-focus="border-color:#2C4A3B;outline:none">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A8A80">Email
+        <input type="email" name="email" required="true" style="padding:14px 15px;background:transparent;border:1px solid rgba(20,23,26,0.25);color:#14171A;font-family:'Instrument Sans',sans-serif;font-size:16px;letter-spacing:0" style-focus="border-color:#2C4A3B;outline:none">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A8A80">Temat
+        <select name="temat" style="padding:14px 15px;background:transparent;border:1px solid rgba(20,23,26,0.25);color:#14171A;font-family:'Instrument Sans',sans-serif;font-size:16px;letter-spacing:0" style-focus="border-color:#2C4A3B;outline:none">
+          <option>Współpraca</option>
+          <option>Media i wystąpienia</option>
+          <option>Szkolenia</option>
+          <option>Mentoring</option>
+          <option>Inne</option>
+        </select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A8A80">Wiadomość
+        <textarea name="wiadomosc" rows="6" required="true" style="padding:14px 15px;background:transparent;border:1px solid rgba(20,23,26,0.25);color:#14171A;font-family:'Instrument Sans',sans-serif;font-size:16px;letter-spacing:0;resize:vertical" style-focus="border-color:#2C4A3B;outline:none"></textarea>
+      </label>
+      <button type="submit" style="align-self:flex-start;padding:15px 30px;background:#14171A;color:#F3F0E9;border:none;font-family:'Instrument Sans',sans-serif;font-size:14px;letter-spacing:0.04em;cursor:pointer" style-hover="background:#2C4A3B">Wyślij wiadomość</button>
+      <p style="margin:0;font-size:12.5px;line-height:1.6;color:#8A8A80">Formularz wysyła realny POST na adres ustawiony w polu „formEndpoint” (obecnie placeholder). Do podmiany po podłączeniu backendu — żaden komunikat „wysłano” nie jest udawany.</p>
+    </form>
+  </div>
+</section>
+
+<footer style="background:#0E100F;color:rgba(243,240,233,0.55);padding:44px;display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;font-size:13.5px">
+  <span style="font-family:'Schibsted Grotesk','Instrument Sans',sans-serif;font-weight:500;letter-spacing:-0.03em;font-size:18px;color:#F3F0E9">Piotr Matejuk</span>
+  <div style="display:flex;flex-wrap:wrap;gap:22px">
+    <a href="https://sacrum.life" target="_blank" rel="noopener" style="color:rgba(243,240,233,0.55)" style-hover="color:#F3F0E9">sacrum.life</a>
+    <a href="https://hipnoterapia.edu.pl" target="_blank" rel="noopener" style="color:rgba(243,240,233,0.55)" style-hover="color:#F3F0E9">hipnoterapia.edu.pl</a>
+    <a href="https://cienfestiwal.com" target="_blank" rel="noopener" style="color:rgba(243,240,233,0.55)" style-hover="color:#F3F0E9">cienfestiwal.com</a>
+    <a href="https://egoisnt.com" target="_blank" rel="noopener" style="color:rgba(243,240,233,0.55)" style-hover="color:#F3F0E9">egoisnt.com</a>
+  </div>
+  <span>© 2026 Piotr Matejuk</span>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://example.com/endpoint-do-podmiany&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Formularze&quot;},&quot;showNotify&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Formularze&quot;},&quot;filmCheckoutUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Film&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const nodes = Array.from(document.querySelectorAll('[data-reveal]'));
+    nodes.forEach(n => {
+      n.style.opacity = '0';
+      n.style.transform = 'translateY(20px)';
+      n.style.transition = 'opacity 700ms cubic-bezier(.22,.61,.36,1), transform 700ms cubic-bezier(.22,.61,.36,1)';
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    nodes.forEach(n => io.observe(n));
+    this._io = io;
+
+    const bar = document.querySelector('[data-progress]');
+    this._onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      if (bar) bar.style.transform = 'scaleX(' + p + ')';
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+  renderVals() {
+    return {
+      formEndpoint: this.props.formEndpoint ?? 'https://example.com/endpoint-do-podmiany',
+      showNotify: this.props.showNotify ?? true,
+      filmCheckoutUrl: this.props.filmCheckoutUrl ?? '#',
+    };
+  }
+}
+</script>
+</body>
+</html>
