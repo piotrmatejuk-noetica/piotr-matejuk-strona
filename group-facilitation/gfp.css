@@ -330,6 +330,24 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
 .tier .btn{margin-top:auto;translate:0 0}
 .tier>.btn{margin-top:auto}
 .tier ul,.tier p{margin-bottom:26px}
+
+/* --- zakup: Stripe + drabinka cenowa --- */
+.pay-row{display:flex;flex-direction:column;gap:9px;margin-top:4px}
+.pay-alt{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;text-align:center;
+  color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px;align-self:center}
+.pay-alt:hover{color:var(--green);border-bottom-color:var(--sage)}
+.pay-raty{font-size:13px;color:var(--muted);text-align:center;line-height:1.5}
+.pay-raty a{color:var(--green);text-decoration:none;border-bottom:1px solid var(--sage-soft)}
+.pay-raty a:hover{border-bottom-color:var(--green)}
+.pay-raty b{font-weight:600}
+.ladder{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 26px;
+  margin:0 auto 26px;padding:13px 20px;max-width:820px;border:1px solid var(--gold);
+  border-radius:12px;background:rgba(156,126,72,.07)}
+.ladder span{font-size:13.5px;color:var(--body)}
+.ladder b{color:var(--ink);font-weight:600}
+.ladder .now b{color:var(--green)}
+.ladder .later{opacity:.7}
+
 .format-strip{
   display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:30px;padding-top:22px;border-top:1px solid var(--line);
   font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);

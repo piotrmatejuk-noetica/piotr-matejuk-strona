@@ -84,9 +84,10 @@
     function close() { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
 
     // Każde CTA prowadzące do zapisu otwiera formularz.
-    document.querySelectorAll('a.btn').forEach(function (a) {
+    document.querySelectorAll('a.btn, a.pay-alt').forEach(function (a) {
       var t = (a.textContent || '').toLowerCase();
-      if (t.indexOf('zapisz si') > -1 || t.indexOf('zarezerwuj') > -1 || t.indexOf('wybieram premium') > -1 || t.indexOf('dowiedz się więcej') > -1) {
+      if (a.classList.contains('btn--buy')) return;   // linki Stripe idą wprost do Stripe
+      if (t.indexOf('zapisz si') > -1 || t.indexOf('zarezerwuj') > -1 || t.indexOf('wybieram premium') > -1 || t.indexOf('dowiedz się więcej') > -1 || t.indexOf('porozmawia') > -1) {
         a.addEventListener('click', function (e) { e.preventDefault(); open(); });
       }
     });
