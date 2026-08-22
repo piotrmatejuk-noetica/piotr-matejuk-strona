@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Strona odtwarzania filmu dokumentalnego „Dream On: Hipnoza” — dostęp po potwierdzeniu płatności. Niepubliczny link przeznaczony wyłącznie dla osoby, która wykupiła dostęp.">
+<title>Dream On: Hipnoza — obejrzyj film</title>
+<meta name="robots" content="noindex, nofollow">
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '613960629514648');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=613960629514648&ev=PageView&noscript=1"
+/></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600&amp;family=Instrument+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; background:#F3F0E9; color:#14171A; font-family:'Instrument Sans',system-ui,sans-serif; display:flex; align-items:center; justify-content:center; padding:24px; -webkit-font-smoothing:antialiased; }
+  .card { max-width:640px; width:100%; text-align:center; }
+  h1, h2 { font-family:'Schibsted Grotesk','Instrument Sans',sans-serif; font-weight:500; letter-spacing:-0.02em; font-size:clamp(26px,4vw,36px); margin:0 0 18px; }
+  p { font-size:16px; line-height:1.6; color:#4A4B46; margin:0 0 24px; }
+  .video-wrap { position:relative; width:100%; aspect-ratio:16/9; background:#0E100F; margin-bottom:24px; overflow:hidden; }
+  .video-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+  a.btn { display:inline-block; padding:14px 28px; background:#14171A; color:#F3F0E9; font-size:14px; letter-spacing:0.04em; text-decoration:none; }
+  a.btn:hover { background:#2C4A3B; }
+  .state { display:none; }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div id="loading" class="state" style="display:block">
+      <h2>Sprawdzam płatność…</h2>
+      <p>Chwila cierpliwości.</p>
+    </div>
+    <div id="unlocked" class="state">
+      <h1>Dream On: Hipnoza</h1>
+      <div class="video-wrap">
+        <iframe id="yt-frame" src="" title="Dream On: Hipnoza" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p>Film jest niepubliczny — link działa tylko dla Ciebie, nie udostępniaj go dalej.</p>
+      <a class="btn" href="https://youtu.be/SLKHkvmb-6Y" target="_blank" rel="noopener">Otwórz w YouTube ↗</a>
+    </div>
+    <div id="denied" class="state">
+      <h2>Nie widzę potwierdzonej płatności</h2>
+      <p>Jeśli właśnie zapłaciłeś/aś i widzisz ten komunikat, odśwież stronę za chwilę. W razie problemów napisz na kontakt@piotrmatejuk.com.</p>
+      <a class="btn" href="/#film">Wróć do strony filmu</a>
+    </div>
+  </main>
+<script>
+(function () {
+  function show(id) {
+    document.querySelectorAll('.state').forEach(function (el) { el.style.display = 'none'; });
+    document.getElementById(id).style.display = 'block';
+  }
+  var params = new URLSearchParams(window.location.search);
+  var sessionId = params.get('session_id');
+  if (!sessionId) { show('denied'); return; }
+
+  fetch('/api/verify-session?session_id=' + encodeURIComponent(sessionId))
+    .then(function (r) { return r.json().then(function (data) { return { ok: r.ok, data: data }; }); })
+    .then(function (result) {
+      if (result.ok && result.data && result.data.ok) {
+        document.getElementById('yt-frame').src = 'https://www.youtube.com/embed/SLKHkvmb-6Y?rel=0';
+        show('unlocked');
+        var purchaseKey = 'fb_purchase_' + sessionId;
+        if (window.fbq && !sessionStorage.getItem(purchaseKey)) {
+          fbq('track', 'Purchase', { value: 39.90, currency: 'PLN', content_name: 'Dream On: Hipnoza' });
+          sessionStorage.setItem(purchaseKey, '1');
+        }
+      } else {
+        show('denied');
+      }
+    })
+    .catch(function () { show('denied'); });
+})();
+</script>
+</body>
+</html>

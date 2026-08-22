@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /film-ogladaj
+Disallow: /api/
+
+Sitemap: https://piotrmatejuk.com/sitemap.xml

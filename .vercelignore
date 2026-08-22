@@ -1,0 +1,6 @@
+# Surowe oryginały zdjęć/wideo (37 MB) — zweryfikowane grepem: zero referencji
+# w jakimkolwiek .html/.js/.css/.json w repo. Katalog roboczy, nie runtime.
+uploads/
+
+# Podgląd wygenerowany przez Claude Design, nieużywany przez żadną stronę.
+.thumbnail
