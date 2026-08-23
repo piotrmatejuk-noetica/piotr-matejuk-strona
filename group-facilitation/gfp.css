@@ -641,6 +641,9 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
 .phone-screen{
   display:block;width:100%;height:100%;border-radius:30px;
   object-fit:cover;background:var(--dark-2);
+  /* tekst zastepczy w srodku <video> dziedziczyl --ink, czyli czarny na prawie czarnym tle,
+     wiec byl niewidoczny dokladnie dla tej osoby, dla ktorej istnieje */
+  color:var(--bg);font-size:14px;line-height:1.6;text-align:center;padding:24px;
 }
 .voice figcaption{margin-top:22px;text-align:center;max-width:34ch}
 .voice blockquote{
