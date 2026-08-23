@@ -30,6 +30,87 @@
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
   }
 
+  /* ---------- NAWIGACJA MOBILNA ----------
+     Cala struktura budowana tutaj (index.html nietykalny).
+     Pozycje czytane z <nav class="topbar-links"> na desktopie, zeby menu
+     nie rozjechalo sie przy przyszlej zmianie nawigacji. */
+  (function () {
+    var topbar = document.querySelector('.topbar');
+    var row = topbar && topbar.querySelector('.topbar-in');
+    var src = topbar && topbar.querySelector('.topbar-links');
+    if (!topbar || !row || !src) return;
+
+    var items = [].slice.call(src.querySelectorAll('a[href]'));
+    if (!items.length) return;
+
+    var PANEL_ID = 'mnavPanel';
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'mnav-toggle';
+    btn.id = 'mnavToggle';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', PANEL_ID);
+    btn.setAttribute('aria-label', 'Menu sekcji strony');
+    btn.innerHTML = '<span class="mnav-bars" aria-hidden="true"><i></i><i></i><i></i></span><span>Menu</span>';
+
+    var panel = document.createElement('nav');
+    panel.className = 'mnav-panel';
+    panel.id = PANEL_ID;
+    panel.setAttribute('aria-label', 'Sekcje strony');
+    panel.setAttribute('data-open', 'false');
+    panel.hidden = true;
+
+    var ul = document.createElement('ul');
+    ul.className = 'mnav-list';
+    items.forEach(function (a) {
+      var li = document.createElement('li');
+      var link = document.createElement('a');
+      link.href = a.getAttribute('href');
+      link.textContent = (a.textContent || '').trim();
+      li.appendChild(link);
+      ul.appendChild(li);
+    });
+    panel.appendChild(ul);
+
+    var right = row.querySelector('.topbar-r');
+    if (right) right.insertBefore(btn, right.firstChild); else row.appendChild(btn);
+    topbar.appendChild(panel);
+
+    var open = false;
+    function setOpen(v, returnFocus) {
+      if (v === open) return;
+      open = v;
+      btn.setAttribute('aria-expanded', v ? 'true' : 'false');
+      if (v) {
+        panel.hidden = false;
+        // wymuszenie reflow, zeby przejscie krycia mialo od czego wystartowac
+        void panel.offsetWidth;
+        panel.setAttribute('data-open', 'true');
+      } else {
+        panel.setAttribute('data-open', 'false');
+        window.setTimeout(function () { if (!open) panel.hidden = true; }, 200);
+        if (returnFocus) btn.focus();
+      }
+    }
+
+    btn.addEventListener('click', function () { setOpen(!open, false); });
+    panel.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false, false); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && open) { e.preventDefault(); setOpen(false, true); }
+    });
+    document.addEventListener('click', function (e) {
+      if (open && !panel.contains(e.target) && !btn.contains(e.target)) setOpen(false, false);
+    });
+    document.addEventListener('focusin', function (e) {
+      if (open && !panel.contains(e.target) && !btn.contains(e.target)) setOpen(false, false);
+    });
+    window.addEventListener('resize', function () {
+      if (open && getComputedStyle(btn).display === 'none') setOpen(false, false);
+    });
+  })();
+
   /* ---------- POLE GRUPOWE (canvas za portretem) ---------- */
   function ringField(canvas, opts) {
     if (!canvas) return;

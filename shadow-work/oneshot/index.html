@@ -6,21 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- LCP: tlo hero jest obrazem CSS (.hero__image), wiec nie da sie mu dac fetchpriority atrybutem -->
 <link rel="preload" as="image" href="/shadow-work/media/mountains-sunset-clean.png" fetchpriority="high">
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '613960629514648');
-/* podglad lokalny — pixel wylaczony */
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=613960629514648&ev=PageView&noscript=1"
-/></noscript>
+<!-- Meta Pixel ladowany dopiero po zgodzie: patrz /consent.js -->
+<link rel="stylesheet" href="/consent.css">
+<script src="/consent.js" defer></script>
 <title>[ONESHOT PODGLĄD] Shadow Work | Siedem dni pracy z cieniem, Bieszczady 2026</title>
 <meta name="description" content="Siedem dni pracy z cieniem, ciałem i archetypem — nie retreat, warsztat z jasną strukturą. Michniowiec, 26.09–2.10.2026, grupa do dziesięciu osób.">
 <link rel="canonical" href="https://piotrmatejuk.com/shadow-work">

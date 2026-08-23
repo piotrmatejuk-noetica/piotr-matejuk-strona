@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Piotr Matejuk">
+  <rect width="64" height="64" fill="#2C4A3B"/>
+  <g fill="#F3F0E9" fill-rule="evenodd">
+    <path d="M6 15 H27 V36 H13 V49 H6 Z M13 21 H21 V29 H13 Z"/>
+    <path d="M33 49 V15 H41 L45.5 32 L50 15 H58 V49 H51 V31 L47.5 44 H43.5 L40 31 V49 Z"/>
+  </g>
+</svg>

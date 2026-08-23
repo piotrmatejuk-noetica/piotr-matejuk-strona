@@ -1,0 +1,65 @@
+/* ---------- bramka zgody (RODO) — wspolna dla calej domeny ----------
+   Samodzielna: nie zalezy od klas przyciskow zadnej podstrony.
+   Tam gdzie strona definiuje wlasne tokeny (np. gfp.css) baner je przejmuje,
+   w pozostalych wypadkach uzywa neutralnej palety strony glownej. */
+.pm-consent{
+  position:fixed;left:0;right:0;bottom:0;z-index:2147483000;
+  background:var(--bg-alt,#EDE9E1);
+  border-top:1px solid rgba(20,23,26,.16); /* stale: tokeny --line bywaja jasne (motywy ciemne) */
+  box-shadow:0 -10px 30px rgba(14,16,15,.10);
+  font-family:var(--sans,'Instrument Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif);
+  color:var(--body,#4A4B46);
+  box-sizing:border-box;
+}
+.pm-consent *,.pm-consent *::before,.pm-consent *::after{box-sizing:border-box}
+.pm-consent[hidden]{display:none}
+.pm-consent-in{
+  max-width:var(--maxw,1180px);margin:0 auto;
+  padding:18px var(--pad,22px);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;
+}
+.pm-consent-txt{
+  flex:1 1 420px;min-width:0;
+  font-size:14px;line-height:1.6;margin:0;
+  color:var(--body,#4A4B46);
+}
+.pm-consent-txt a{color:var(--gold-ink,#2C4A3B);text-underline-offset:3px}
+.pm-consent-txt a:hover{color:var(--ink,#14171A)}
+.pm-consent-act{display:flex;flex-wrap:wrap;gap:10px;flex:0 0 auto}
+.pm-consent-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:44px;min-width:44px;padding:12px 22px;
+  font:inherit;font-size:14px;line-height:1.2;letter-spacing:.02em;
+  border:1px solid var(--ink,#14171A);border-radius:0;
+  background:transparent;color:var(--ink,#14171A);
+  cursor:pointer;white-space:nowrap;
+  transition:background-color .16s ease,color .16s ease,border-color .16s ease;
+}
+.pm-consent-btn:hover{background:var(--ink,#14171A);color:var(--bg,#F3F0E9)}
+.pm-consent-btn:focus-visible{outline:2px solid var(--ink,#14171A);outline-offset:2px}
+.pm-consent-btn--primary{
+  background:var(--ink,#14171A);color:var(--bg,#F3F0E9);border-color:var(--ink,#14171A);
+}
+.pm-consent-btn--primary:hover{
+  background:var(--green,#2C4A3B);border-color:var(--green,#2C4A3B);color:var(--bg,#F3F0E9);
+}
+/* strony z wlasnym mobilnym paskiem CTA (np. group-facilitation) */
+.pm-consent--above-bar{bottom:76px}
+@media(max-width:760px){
+  .pm-consent-in{padding:16px 18px;gap:12px}
+  .pm-consent-txt{flex:1 1 100%;font-size:13.5px}
+  .pm-consent-act{width:100%}
+  .pm-consent-act .pm-consent-btn{flex:1 1 140px}
+}
+@media(min-width:761px){
+  .pm-consent--above-bar{bottom:0}
+}
+@media (prefers-reduced-motion:no-preference){
+  .pm-consent{animation:pm-consent-up .28s ease-out both}
+  @keyframes pm-consent-up{from{transform:translateY(12px);opacity:0}to{transform:none;opacity:1}}
+}
+
+/* Baner jest tylko punktem lądowania fokusu (tabindex="-1"), nie kontrolką —
+   domyślna obwódka przeglądarki rysowałaby obcy niebieski prostokąt.
+   Widoczny fokus zostaje tam, gdzie ma sens: na obu przyciskach. */
+.pm-consent[tabindex="-1"]:focus { outline: none; }
