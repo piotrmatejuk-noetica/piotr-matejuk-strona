@@ -624,3 +624,48 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
 
 /* ---------- baner zgody: obszar dotyku linku (arkusz banera /consent.css jest wspolny dla domeny) ---------- */
 .pm-consent-txt a{display:inline-block;padding-block:6px;line-height:1.45}
+/* ---------- opinie uczestników: makiety telefonu ---------- */
+.voices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,4vw,56px);margin-top:8px}
+.voice{margin:0;display:grid;grid-template-rows:auto 1fr auto;justify-items:center;align-content:start}
+/* figcaption rozciaga sie, wiec rozwijane transkrypcje obu opinii stoja w jednej linii
+   niezaleznie od dlugosci cytatu */
+.phone{
+  position:relative;width:100%;max-width:280px;aspect-ratio:9/16;
+  padding:9px;border-radius:38px;background:var(--dark);
+  box-shadow:0 0 0 1px rgba(20,23,26,.18), 0 18px 44px -22px rgba(20,23,26,.5);
+}
+.phone-notch{
+  position:absolute;top:15px;left:50%;transform:translateX(-50%);
+  width:78px;height:5px;border-radius:3px;background:rgba(243,240,233,.22);z-index:2;pointer-events:none;
+}
+.phone-screen{
+  display:block;width:100%;height:100%;border-radius:30px;
+  object-fit:cover;background:var(--dark-2);
+}
+.voice figcaption{margin-top:22px;text-align:center;max-width:34ch}
+.voice blockquote{
+  margin:0;font-size:clamp(17px,1.7vw,20px);line-height:1.5;color:var(--ink);text-wrap:pretty;
+}
+.voice blockquote::before{content:"„"}
+.voice blockquote::after{content:"”"}
+.voice cite{
+  display:block;margin-top:10px;font-style:normal;font-size:13.5px;letter-spacing:.02em;color:var(--muted);
+}
+.voice cite b{color:var(--ink);font-weight:600}
+.voice-t{margin-top:16px;width:100%;max-width:44ch;border-top:1px solid var(--line-soft)}
+.voice-t summary{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  min-height:44px;cursor:pointer;font-size:14px;color:var(--body);list-style:none;
+}
+.voice-t summary::-webkit-details-marker{display:none}
+.voice-t summary:hover{color:var(--green)}
+.voice-t p{margin:0 0 18px;font-size:15.5px;line-height:1.75;color:var(--body);text-wrap:pretty}
+.voices-note{
+  margin:clamp(30px,4vw,44px) auto 0;max-width:64ch;text-align:center;
+  font-size:14px;line-height:1.65;color:var(--muted)
+}
+@media(max-width:700px){
+  .voices{grid-template-columns:1fr;gap:44px}
+  .phone{max-width:260px}
+  .voice-t{max-width:none}
+}
