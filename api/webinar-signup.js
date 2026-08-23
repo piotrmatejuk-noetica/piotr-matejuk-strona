@@ -2,10 +2,12 @@
 // Dopisuje subskrybenta do grupy MailerLite odpowiadającej wybranemu terminowi
 // oraz do wspólnej grupy "zainteresowani prowadzeniem" (segment pod całą kampanię).
 
+// Dwa terminy na żywo plus opcja dla osób, które chcą wyłącznie nagranie.
+// Nagranie jest podawane WPROST jako nagranie — żadnego udawania transmisji na żywo.
 const TERMINY = {
   '2026-09-08': { grupa: '196613402990217090', opis: 'wtorek 8 września, 19:00' },
-  '2026-09-15': { grupa: '196613403133872089', opis: 'wtorek 15 września, 19:00' },
   '2026-09-29': { grupa: '196613403278574790', opis: 'wtorek 29 września, 19:00' },
+  'nagranie':   { grupa: '196613403133872089', opis: 'nagranie webinaru' },
 };
 const GRUPA_ZAINTERESOWANI = '196613403430618530';
 
