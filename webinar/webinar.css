@@ -1,0 +1,81 @@
+:root{
+  --bg:#F3F0E9; --bg-alt:#EDE9E1; --ink:#14171A; --body:#4A4B46; --muted:#65655C;
+  --green:#2C4A3B; --sage:#7C9A87; --sage-soft:#B9CDBF; --dark:#0E100F;
+  --gold-ink:#7D6335; --line:rgba(20,23,26,0.14); --line-soft:rgba(20,23,26,0.09);
+  --display:'Schibsted Grotesk','Instrument Sans',system-ui,sans-serif;
+  --sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --maxw:1100px; --pad:clamp(20px,5vw,44px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wb-wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+.wb-hero{background:var(--dark);color:var(--bg);padding:clamp(56px,9vw,104px) 0 clamp(48px,7vw,84px)}
+.wb-eyebrow{margin:0 0 18px;font-family:var(--display);font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--sage)}
+.wb-hero h1{margin:0 0 22px;font-family:var(--display);font-weight:500;
+  font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.16;max-width:20ch;text-wrap:balance}
+.wb-lede{margin:0;max-width:60ch;color:rgba(243,240,233,.78);font-size:clamp(16px,1.5vw,18.5px)}
+
+.wb-body{padding:clamp(44px,6vw,76px) 0}
+.wb-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,5vw,64px);align-items:start}
+.wb-col h2{margin:0 0 20px;font-family:var(--display);font-weight:500;
+  font-size:clamp(1.3rem,2.2vw,1.75rem);line-height:1.25}
+.wb-list{margin:0;padding-left:1.3em;display:grid;gap:16px;color:var(--body)}
+.wb-list li{padding-left:.2em}
+.wb-list b{color:var(--ink);font-weight:600}
+.wb-note{margin:22px 0 0;font-size:15px;color:var(--muted);max-width:52ch}
+
+.wb-card{background:#fff;border:1px solid var(--line);padding:clamp(24px,3.4vw,34px)}
+.wb-card h2{margin-bottom:16px}
+.wb-dates{border:0;margin:0 0 22px;padding:0;display:grid;gap:10px}
+.wb-dates legend{padding:0;margin-bottom:12px;font-size:14px;color:var(--muted)}
+.wb-date{display:flex;align-items:center;gap:12px;min-height:56px;padding:10px 14px;
+  border:1px solid var(--line);cursor:pointer;transition:border-color .12s,background .12s}
+.wb-date:hover{border-color:var(--sage)}
+.wb-date input{accent-color:var(--green);width:18px;height:18px;flex:none}
+.wb-date span{display:flex;flex-direction:column;line-height:1.3}
+.wb-date b{font-weight:600}
+.wb-date small{color:var(--muted);font-size:13.5px}
+.wb-date:has(input:checked){border-color:var(--green);background:var(--bg-alt)}
+
+.wb-card label{display:block;margin:0 0 6px;font-size:14px;color:var(--body)}
+.wb-req{color:var(--gold-ink)}
+.wb-card input[type=text],.wb-card input[type=email]{
+  width:100%;min-height:48px;padding:11px 13px;margin-bottom:18px;font:inherit;font-size:16px;
+  border:1px solid var(--line);background:#fff;color:var(--ink)}
+.wb-card input[type=text]:focus,.wb-card input[type=email]:focus{outline:2px solid var(--green);outline-offset:1px}
+.wb-card input[aria-invalid=true]{border-color:#B3261E}
+.wb-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.wb-btn{width:100%;min-height:52px;border:0;cursor:pointer;background:var(--ink);color:var(--bg);
+  font-family:var(--display);font-size:16px;font-weight:600;letter-spacing:.01em;
+  transition:background .12s}
+.wb-btn:hover{background:var(--green)}
+.wb-btn:disabled{opacity:.6;cursor:default}
+.wb-msg{margin:0 0 12px;font-size:14.5px;color:#B3261E;min-height:0}
+.wb-msg:empty{display:none}
+.wb-consent{margin:14px 0 0;font-size:13px;line-height:1.55;color:var(--muted)}
+
+.wb-ok{text-align:center;padding:14px 0}
+.wb-tick{margin:0 0 10px;font-size:34px;color:var(--green)}
+.wb-ok h3{margin:0 0 8px;font-family:var(--display);font-weight:500;font-size:1.35rem}
+.wb-ok p{margin:0 0 6px;color:var(--body)}
+
+.wb-foot{background:var(--bg-alt);padding:clamp(36px,5vw,60px) 0;border-top:1px solid var(--line-soft)}
+.wb-foot p{margin:0 0 12px;max-width:70ch;color:var(--body);font-size:16px}
+.wb-foot a{color:var(--green);text-decoration:none;border-bottom:1px solid var(--sage-soft);
+  display:inline-flex;align-items:center;min-height:24px}
+.wb-foot a:hover{border-bottom-color:var(--green)}
+
+:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+
+@media(max-width:860px){
+  .wb-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion: reduce){
+  *{transition-duration:120ms!important;animation:none!important}
+}
