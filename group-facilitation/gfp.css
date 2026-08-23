@@ -343,6 +343,12 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
 .urgency .cd-unit{background:transparent;box-shadow:0 0 0 1px rgba(243,240,233,.24)}
 .urgency .cd-n{color:var(--bg)}
 .urgency .cd-l{color:rgba(243,240,233,.6)}
+.price-stack{margin:0 0 14px;font-size:16.5px;line-height:1.65;color:var(--body);max-width:66ch}
+.price-stack b{font-weight:600;color:var(--ink)}
+.pay-risk{margin:2px 0 0;font-size:13px;line-height:1.55;color:var(--muted);text-align:center}
+.pay-risk a{color:var(--green);text-decoration:underline;text-underline-offset:3px;
+  display:inline-block;padding-block:6px}
+.pay-risk a:hover{color:var(--ink)}
 .price-note{margin-bottom:26px;font-size:15.5px;color:var(--muted);max-width:66ch}
 .tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px}
 .tier{
@@ -423,9 +429,24 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
 .guarantee-lead{margin-top:20px;font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:var(--body);max-width:56ch}
 .guarantee-lead b{font-weight:500;color:var(--ink)}
 @media(max-width:560px){.guarantee-seal{position:static;margin-bottom:18px}}
+.guarantee-list{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:26px;max-width:64ch}
+.guarantee-list li{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.guarantee-list .gn{font-family:var(--display);font-size:13px;letter-spacing:.14em;color:var(--gold-ink);
+  padding-top:3px;font-variant-numeric:tabular-nums}
+.guarantee-list h3{margin:0 0 6px;font-size:clamp(17px,1.7vw,20px);font-weight:500;color:var(--ink)}
+.guarantee-list p{margin:0;font-size:16.5px;line-height:1.7;color:var(--body);text-wrap:pretty}
+.guarantee-list a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+.guarantee-list a:hover{color:var(--ink)}
+@media(max-width:560px){
+  .guarantee-list li{grid-template-columns:1fr;gap:6px}
+  .guarantee-list .gn{padding-top:0}
+}
+
 
 /* ---------- finał ---------- */
 .final{background:var(--dark);color:var(--bg);text-align:left}
+.final-guarantee{margin-top:18px;font-size:15.5px;line-height:1.7;max-width:62ch;
+  padding-top:18px;border-top:1px solid rgba(243,240,233,.16)}
 .final-date{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage)}
 .final h2{margin-top:18px;max-width:20ch}
 .final p{margin-top:22px;color:rgba(243,240,233,.75);max-width:62ch;text-wrap:pretty}
