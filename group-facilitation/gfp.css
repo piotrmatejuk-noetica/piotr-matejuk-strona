@@ -87,6 +87,8 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
 .dark .btn--ghost:hover,.final .btn--ghost:hover{background:var(--bg);color:var(--ink)}
 .final .btn--primary{background:var(--bg);color:var(--ink);border-color:var(--bg)}
 .final .btn--primary:hover{background:var(--sage);border-color:var(--sage);color:var(--ink)}
+/* Na waskich ekranach dlugie etykiety (np. finalne CTA) nie moga rozpychac strony w poziomie. */
+@media(max-width:430px){.btn{white-space:normal;text-align:center;max-width:100%}}
 .arrow{transition:transform .18s ease}
 .btn:hover .arrow{transform:translateX(3px)}
 
@@ -96,7 +98,7 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
   border-bottom:1px solid var(--line-soft);
 }
 .topbar-in{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px}
-.brand{display:flex;flex-direction:column;line-height:1.15}
+.brand{display:flex;flex-direction:column;justify-content:center;line-height:1.15;min-height:44px}
 .brand-mark{font-family:var(--display);font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
 .brand-sub{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .topbar-links{display:flex;align-items:center;gap:22px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
@@ -157,14 +159,20 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
 .hero-lede strong{font-weight:500;color:var(--ink)}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .hero-countdown{margin-top:34px;padding-top:24px;border-top:1px solid var(--line)}
-.hcd-label{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.countdown{display:flex;gap:10px;margin-top:14px}
+.hcd-label{display:block;font-size:13.5px;line-height:1.5;letter-spacing:.01em;color:var(--muted)}
+.hcd-label b{font-weight:500;color:var(--ink)}
+/* Wysokosc zarezerwowana z gory: blok zajmuje tyle samo przed i po wpisaniu liczb przez JS,
+   wiec tresc pod nim nie podskakuje (CLS). Wartosc = zmierzona wysokosc wypelnionego wiersza. */
+.countdown{display:flex;gap:10px;margin-top:14px;min-height:63px}
+.hero-countdown{min-height:142px}
 .cd-unit{
   min-width:66px;padding:10px 12px;background:var(--bg);box-shadow:0 0 0 1px var(--line);
   display:flex;flex-direction:column;align-items:center;gap:2px;
 }
 .cd-n{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
-.cd-l{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+/* Na najwezszych ekranach cztery pola licznika dziela szerokosc po rowno zamiast rozpychac strone. */
+@media(max-width:400px){.cd-unit{min-width:0;flex:1 1 0;padding:10px 6px}.countdown{gap:8px}}
+.cd-l{font-size:11.5px;line-height:1.25;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .hero-graphic{display:flex;flex-direction:column;gap:22px;min-width:0}
 .hero-photo{margin:0}
 .hero-photo img{width:100%;height:auto;box-shadow:0 0 0 1px var(--line)}
@@ -209,6 +217,23 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
 .dot{
   font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--green);
   font-variant-numeric:tabular-nums;
+}
+
+/* ---------- lista "dla kogo" (kompakt) ---------- */
+.who-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1px}
+.who{
+  margin:0;background:var(--bg);box-shadow:0 0 0 1px var(--line);
+  padding:clamp(18px,2vw,26px);font-size:16px;line-height:1.65;
+  color:var(--body);text-wrap:pretty;
+}
+.band-warm .who{background:var(--bg-alt)}
+.who b{color:var(--ink);font-weight:600}
+.who .dot{margin-right:10px}
+@media(max-width:700px){
+  .who{padding:16px 0;box-shadow:none;border-top:1px solid var(--line)}
+  .who-list{gap:0}
+  .bcard{padding:22px 0;box-shadow:none;border-top:1px solid var(--line);gap:8px}
+  .bgrid{gap:0}
 }
 
 /* ---------- porównanie ---------- */
@@ -278,6 +303,11 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
 .host-body h2{margin-top:16px}
 .host-role{display:block;margin-top:12px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
 .host-body p{margin-top:22px;color:var(--body);text-wrap:pretty}
+.bio-lead{
+  font-size:clamp(17px,1.45vw,19.5px);line-height:1.62;color:var(--ink);
+  padding-left:clamp(16px,1.6vw,22px);border-left:2px solid var(--sage-soft);
+}
+.bio-lead strong{font-weight:500;color:var(--ink)}
 .host-body p strong{font-weight:500;color:var(--ink)}
 .host-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:32px}
 .host-stats .s{background:var(--bg-alt);padding:22px;box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;gap:6px}
@@ -350,34 +380,60 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
   display:inline-block;padding-block:6px}
 .pay-risk a:hover{color:var(--ink)}
 .price-note{margin-bottom:26px;font-size:15.5px;color:var(--muted);max-width:66ch}
-.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px}
+/* Dwa kafle: rowna wysokosc + wspolna linia bazowa przyciskow.
+   Listy sa roznej dlugosci, wiec to lista sie rozciaga (flex:1), a nie blok akcji —
+   dzieki temu .pay-row (a wiec i glowny przycisk) zaczyna sie w obu kaflach na tej samej wysokosci.
+   Warunek: naglowki obu kafli musza byc rownie wysokie — rdzen nie ma wiersza .tier-plus,
+   wiec kompensujemy go rowna rezerwa (--tier-plus-gap). */
+.tiers{display:grid;grid-template-columns:1fr;gap:1px}
+@media(min-width:820px){.tiers{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .tier{
   display:flex;flex-direction:column;gap:12px;padding:clamp(26px,3vw,36px);
   background:var(--bg);box-shadow:0 0 0 1px var(--line);
+  --tier-plus-gap:38.25px;
 }
-.tier--core{background:#fff}
-.tier--premium{box-shadow:0 0 0 1px var(--gold-ink)}
+/* Akcent na pakiecie rekomendowanym — to on ma prowadzic wzrok, nie premium. */
+.tier--core{background:#fff;box-shadow:0 0 0 2px var(--green);z-index:1}
+.tier--premium{box-shadow:0 0 0 1px var(--line)}
 .tier-badge{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
-.tier--premium .tier-badge{color:var(--gold-ink)}
+.tier--premium .tier-badge{color:var(--muted)}
 .tier-name{font-family:var(--display);font-size:21px;letter-spacing:-0.02em}
 .tier-price{font-family:var(--display);font-size:clamp(30px,3vw,42px);letter-spacing:-0.03em;line-height:1}
-.tier-for{font-size:13.5px;color:var(--muted)}
-.tier-plus{margin-top:6px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.tier ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:12px}
+.tier-for{font-size:13.5px;line-height:1.5;color:var(--muted)}
+.tier--core .tier-for{font-size:14.5px;font-weight:500;color:var(--green)}
+@media(min-width:820px){.tier--core .tier-for{margin-bottom:var(--tier-plus-gap)}}
+.tier-plus{margin-top:6px;font-size:13.5px;line-height:1.5;letter-spacing:.01em;color:var(--muted)}
+.tier ul{list-style:none;margin:14px 0 26px;padding:0;display:grid;gap:12px;align-content:start;flex:1 1 auto}
 .tier li{display:flex;gap:11px;font-size:15.5px;line-height:1.6;color:var(--body)}
 .tier li strong{font-weight:500;color:var(--ink)}
 .ck{color:var(--green);flex:none}
 .tier--premium .ck{color:var(--gold-ink)}
-.tier p{font-size:15.5px;line-height:1.7;color:var(--body)}
-.tier .btn{margin-top:auto;translate:0 0}
+.tier p{font-size:15.5px;line-height:1.7;color:var(--body);margin-bottom:26px}
 .tier>.btn{margin-top:auto}
-.tier ul,.tier p{margin-bottom:26px}
+/* Premium schodzi z wypelnionego zlota na wariant obrysowy. */
+.tier--premium .btn--gold{background:transparent;color:var(--gold-ink);border-color:var(--gold-ink)}
+.tier--premium .btn--gold:hover{background:var(--gold-ink);color:#fff;border-color:var(--gold-ink)}
 
 /* --- zakup: Stripe + drabinka cenowa --- */
-.pay-row{display:flex;flex-direction:column;gap:9px;margin-top:4px}
-.pay-alt{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;text-align:center;
-  color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px;align-self:center}
-.pay-alt:hover{color:var(--green);border-bottom-color:var(--sage)}
+.pay-row{display:flex;flex-direction:column;gap:9px;margin-top:0}
+.pay-row>.btn{margin-top:0}
+/* Drugorzedne wyjscie: widoczne jako pelny przycisk, ale slabsze od czarnego zakupu nad nim. */
+.pay-secondary{
+  margin-top:4px;font-size:13.5px;padding:13px 22px;
+  border-color:var(--line);color:var(--body);background:transparent;
+}
+.pay-secondary:hover{background:var(--green);border-color:var(--green);color:var(--bg)}
+/* Wspolna linia bazowa CTA w ukladzie dwukolumnowym.
+   Lista rozciaga sie (flex:1), wiec blok akcji jest dosuniety do dolu kafla; zeby glowny przycisk
+   startowal w obu kaflach na tej samej wysokosci, blok akcji dostaje wyrownana wysokosc — rowna
+   zmierzonej naturalnej wysokosci dluzszego bloku (rdzen) w danym zakresie szerokosci.
+   W premium nadmiar idzie miedzy przycisk a notke (space-between), a nie w pusty ogon. */
+@media(min-width:820px){
+  .tier .pay-row{min-height:336px}
+  .tier--premium .pay-row{justify-content:space-between}
+}
+@media(min-width:900px){.tier .pay-row{min-height:310px}}
+@media(min-width:1180px){.tier .pay-row{min-height:284px}}
 .pay-raty{font-size:13px;color:var(--muted);text-align:center;line-height:1.5}
 /* Linki uruchamiajace platnosc: powiekszony obszar dotyku (WCAG 2.2 AA 2.5.8).
    Podkreslenie przez text-decoration, zeby padding nie odsuwal kreski od tekstu. */
@@ -404,6 +460,22 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
   display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:30px;padding-top:22px;border-top:1px solid var(--line);
   font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
 }
+
+/* ---------- po kursie: zjazd w Bieszczadach (osobne wydarzenie) ---------- */
+/* Czyta sie jako dodatek po kursie, nie jako trzecia opcja zakupu:
+   wezszy blok, spokojniejsza typografia, wyrazne odciecie od kafli cennika. */
+.after-course{
+  background:var(--bg);border-block:1px solid var(--line);
+  padding-block:clamp(38px,4.5vw,62px);
+}
+/* Lewa krawedz zostaje na siatce strony; wezszy jest sam tekst, nie kontener. */
+.after-course h2,.after-course p{max-width:62ch}
+.after-course .eyebrow{color:var(--muted)}
+.after-course h2{font-size:clamp(23px,2.1vw,30px)}
+.after-course p{margin-top:16px;font-size:16px;line-height:1.72;color:var(--body);text-wrap:pretty}
+.after-course p b{font-weight:600;color:var(--ink)}
+.after-course .btn{margin-top:26px;border-color:var(--line);color:var(--body)}
+.after-course .btn:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 
 /* ---------- FAQ ---------- */
 .faq{display:grid;gap:1px;background:var(--line)}
@@ -435,7 +507,10 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
   padding-top:3px;font-variant-numeric:tabular-nums}
 .guarantee-list h3{margin:0 0 6px;font-size:clamp(17px,1.7vw,20px);font-weight:500;color:var(--ink)}
 .guarantee-list p{margin:0;font-size:16.5px;line-height:1.7;color:var(--body);text-wrap:pretty}
-.guarantee-list a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+/* Link w tresci gwarancji (m.in. adres e-mail): powiekszony obszar dotyku do >=24 px (WCAG 2.2 AA 2.5.8).
+   Podkreslenie zostaje przy tekscie, bo idzie przez text-decoration, nie przez ramke. */
+.guarantee-list a{color:var(--green);text-decoration:underline;text-underline-offset:3px;
+  display:inline-block;padding-block:7px;line-height:1.45}
 .guarantee-list a:hover{color:var(--ink)}
 @media(max-width:560px){
   .guarantee-list li{grid-template-columns:1fr;gap:6px}
@@ -450,6 +525,16 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
 .final-date{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage)}
 .final h2{margin-top:18px;max-width:20ch}
 .final p{margin-top:22px;color:rgba(243,240,233,.75);max-width:62ch;text-wrap:pretty}
+.final-recap{
+  display:grid;gap:14px;margin-top:30px;padding:22px clamp(20px,2.4vw,28px);
+  max-width:64ch;box-shadow:inset 0 0 0 1px rgba(243,240,233,.18);
+  background:rgba(243,240,233,.045);
+}
+.final-recap p{margin-top:0;font-size:15.5px;line-height:1.65;color:rgba(243,240,233,.78)}
+.final-recap b{font-weight:500;color:var(--bg)}
+.final-recap a{color:var(--sage);text-decoration:underline;text-underline-offset:3px;
+  display:inline-block;padding-block:5px;line-height:1.45}
+.final-recap a:hover{color:var(--bg)}
 .final .btn{margin-top:32px}
 
 /* ---------- stopka ---------- */
@@ -485,7 +570,9 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
 }
 .signup-x:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .signup-body{padding:clamp(24px,3vw,34px);display:grid;gap:18px}
-.f label,.f legend{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+/* Czesc etykiet formularza to pelne pytania („Czy masz juz pomysl na swoj warsztat?"),
+   a wersaliki na zdaniu czyta sie wolniej — caly formularz zostaje przy normalnej wielkosci liter. */
+.f label,.f legend{display:block;font-size:13.5px;line-height:1.45;letter-spacing:.01em;color:var(--muted);margin-bottom:7px}
 .f input,.f select,.f textarea{
   width:100%;padding:12px 14px;font-family:var(--sans);font-size:15.5px;color:var(--ink);
   background:#fff;border:1px solid var(--line);
@@ -534,3 +621,6 @@ h3{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
   .mnav-panel{transform:none !important;transition:opacity 120ms ease,visibility 0s linear 120ms !important}
   .mnav-panel[data-open="true"]{transition:opacity 120ms ease,visibility 0s !important}
 }
+
+/* ---------- baner zgody: obszar dotyku linku (arkusz banera /consent.css jest wspolny dla domeny) ---------- */
+.pm-consent-txt a{display:inline-block;padding-block:6px;line-height:1.45}

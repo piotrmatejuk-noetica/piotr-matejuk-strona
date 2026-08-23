@@ -155,33 +155,129 @@
       btn = document.getElementById('signupSubmit'),
       ENDPOINT = '/api/gfp-signup';
 
-    function open() {
+    var KEY = 'gfp_zgloszenie', lastTrigger = null;
+
+    /* Wypelniony formularz przezywa przypadkowe zamkniecie i odswiezenie karty. */
+    function zapiszStan() {
+      try {
+        var d = {};
+        new FormData(form).forEach(function (v, k) { if (k !== 'firma') d[k] = String(v); });
+        sessionStorage.setItem(KEY, JSON.stringify(d));
+      } catch (e) { /* tryb prywatny — dzialamy dalej bez zapisu */ }
+    }
+    function wczytajStan() {
+      try {
+        var raw = sessionStorage.getItem(KEY); if (!raw) return;
+        var d = JSON.parse(raw);
+        Object.keys(d).forEach(function (k) {
+          var pola = form.querySelectorAll('[name="' + k + '"]');
+          pola.forEach(function (el) {
+            if (el.type === 'radio' || el.type === 'checkbox') { if (el.value === d[k]) el.checked = true; }
+            else el.value = d[k];
+          });
+        });
+        form.querySelectorAll('input[data-reveal], input[data-hide]').forEach(function (r) {
+          if (r.checked) r.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+      } catch (e) { /* uszkodzony zapis ignorujemy */ }
+    }
+    function wyczyscStan() { try { sessionStorage.removeItem(KEY); } catch (e) {} }
+    function czyWypelniony() {
+      var pusty = true;
+      new FormData(form).forEach(function (v, k) {
+        if (k !== 'firma' && String(v).trim()) pusty = false;
+      });
+      return !pusty;
+    }
+
+    function open(trigger) {
+      lastTrigger = trigger || null;
       err.className = 'signup-msg'; err.textContent = '';
       form.style.display = ''; ok.style.display = 'none';
       if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+      wczytajStan();
       var first = document.getElementById('f_imie');
       if (first) setTimeout(function () { first.focus(); }, 60);
     }
-    function close() { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
+    function close() {
+      if (dlg.close) dlg.close(); else dlg.removeAttribute('open');
+      /* fokus wraca tam, skad przyszedl — inaczej laduje na <body> */
+      if (lastTrigger && document.contains(lastTrigger)) lastTrigger.focus({ preventScroll: true });
+      lastTrigger = null;
+    }
 
-    // Każde CTA prowadzące do zapisu otwiera formularz.
-    document.querySelectorAll('a.btn, a.pay-alt').forEach(function (a) {
-      var t = (a.textContent || '').toLowerCase();
-      if (a.classList.contains('btn--buy')) return;   // linki Stripe idą wprost do Stripe
-      if (t.indexOf('zapisz si') > -1 || t.indexOf('zarezerwuj') > -1 || t.indexOf('wybieram premium') > -1 || t.indexOf('dowiedz się więcej') > -1 || t.indexOf('porozmawia') > -1) {
-        a.addEventListener('click', function (e) { e.preventDefault(); open(); });
+    /* Walidacja polowa: pokazuje ktore pole jest zle, zamiast jednego zbiorczego komunikatu. */
+    var WYMAGANE = [
+      { id: 'f_imie', label: 'imię' },
+      { id: 'f_nazwisko', label: 'nazwisko' },
+      { id: 'f_email', label: 'adres e-mail' },
+      { id: 'f_tel', label: 'numer telefonu' }
+    ];
+    function polePuste(el) {
+      return el.type === 'checkbox' ? !el.checked : !String(el.value || '').trim();
+    }
+    function zleEmail(el) {
+      return el.id === 'f_email' && el.value.trim() && !/^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$/.test(el.value.trim());
+    }
+    function oznacz(el, zle) {
+      if (zle) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid');
+    }
+    WYMAGANE.forEach(function (f) {
+      var el = document.getElementById(f.id); if (!el) return;
+      el.addEventListener('blur', function () { oznacz(el, polePuste(el) || zleEmail(el)); });
+      el.addEventListener('input', function () { if (el.getAttribute('aria-invalid')) oznacz(el, false); });
+    });
+    var zgoda = document.getElementById('f_zgoda');
+    if (zgoda) zgoda.addEventListener('change', function () { oznacz(zgoda, !zgoda.checked); });
+
+    function pierwszyBlad() {
+      for (var i = 0; i < WYMAGANE.length; i++) {
+        var el = document.getElementById(WYMAGANE[i].id);
+        if (!el) continue;
+        if (polePuste(el)) return { el: el, tekst: 'Uzupełnij ' + WYMAGANE[i].label + '.' };
+        if (zleEmail(el)) return { el: el, tekst: 'Podaj poprawny adres e-mail.' };
       }
+      if (zgoda && !zgoda.checked) return { el: zgoda, tekst: 'Potrzebuję twojej zgody na kontakt, żeby się odezwać.' };
+      return null;
+    }
+
+    // Formularz otwierają WYŁĄCZNIE elementy z data-action="signup".
+    // Główne CTA (topbar, hero, pasek mobilny, sekcja finalna) prowadzą do #cennik
+    // i nie są tutaj przechwytywane.
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest ? e.target.closest('[data-action="signup"]') : null;
+      if (!trigger) return;
+      e.preventDefault();
+      open(trigger);
     });
 
     document.getElementById('signupClose').addEventListener('click', close);
     document.getElementById('signupDone').addEventListener('click', close);
-    dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });
+    /* Klikniecie w tlo nie moze skasowac kilku minut pisania. */
+    dlg.addEventListener('click', function (e) {
+      if (e.target !== dlg) return;
+      if (czyWypelniony()) return;
+      close();
+    });
+    form.addEventListener('input', zapiszStan);
+    form.addEventListener('change', zapiszStan);
 
     // "Mam pomysł: tak" odsłania pole opisu.
     document.querySelectorAll('input[data-reveal]').forEach(function (r) {
       r.addEventListener('change', function () {
         var w = document.getElementById(r.getAttribute('data-reveal'));
         if (w) w.style.display = (r.value === 'tak' && r.checked) ? '' : 'none';
+      });
+    });
+
+    // "Prowadzę już warsztaty: nie" odsłania pytanie o zamiar. Przy "tak" jest bez sensu.
+    document.querySelectorAll('input[data-hide]').forEach(function (r) {
+      r.addEventListener('change', function () {
+        var w = document.getElementById(r.getAttribute('data-hide'));
+        if (!w) return;
+        var pokaz = (r.value === 'nie' && r.checked);
+        w.style.display = pokaz ? '' : 'none';
+        if (!pokaz) w.querySelectorAll('input[type="radio"]').forEach(function (x) { x.checked = false; });
       });
     });
 
@@ -192,11 +288,12 @@
       fd.forEach(function (v, k) { data[k] = String(v); });
       ['imie', 'nazwisko', 'email', 'telefon'].forEach(function (k) { data[k] = (data[k] || '').trim(); });
 
-      if (!data.imie || !data.nazwisko || !data.email || !data.telefon) {
-        err.className = 'signup-msg err'; err.textContent = 'Uzupełnij imię, nazwisko, e-mail i telefon.'; return;
-      }
-      if (!/^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$/.test(data.email)) {
-        err.className = 'signup-msg err'; err.textContent = 'Podaj poprawny adres e-mail.'; return;
+      var blad = pierwszyBlad();
+      if (blad) {
+        oznacz(blad.el, true);
+        err.className = 'signup-msg err'; err.textContent = blad.tekst;
+        blad.el.focus({ preventScroll: false });
+        return;
       }
 
       btn.disabled = true; btn.innerHTML = 'Wysyłam…';
@@ -213,6 +310,7 @@
             : 'Nie udało się wysłać zgłoszenia.');
         }
         if (window.fbq) fbq('track', 'Lead', { content_name: 'group-facilitation' });
+        wyczyscStan();
         form.style.display = 'none'; ok.style.display = '';
       } catch (ex) {
         err.className = 'signup-msg err';

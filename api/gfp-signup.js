@@ -57,6 +57,7 @@ module.exports = async (req, res) => {
     `E-mail: ${email}`,
     `Telefon: ${telefon}`,
     `Preferowane godziny kontaktu: ${clean(body.godziny_kontaktu, 60) || 'dowolne'}`,
+    `Zgoda na kontakt i przetwarzanie danych: ${clean(body.zgoda, 10) === 'tak' ? 'TAK' : 'brak'}`,
     '',
     `Prowadzi już warsztaty: ${clean(body.prowadzi_warsztaty, 10) || '—'}`,
     `Zamierza prowadzić warsztaty: ${clean(body.zamierza_prowadzic, 10) || '—'}`,
