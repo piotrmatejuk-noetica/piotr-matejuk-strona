@@ -115,3 +115,21 @@ html{caret-color:var(--green)}
   .wb-bio-foto{max-width:320px}
   .wb-glosy{grid-template-columns:minmax(0,1fr)}
 }
+
+/* ---------- oceny z ankiet ---------- */
+.wb-oceny{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.4vw,30px);
+  margin-top:clamp(28px,3.5vw,44px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--line)}
+.wb-ocena{display:grid;gap:8px;align-content:start}
+.wb-ocena-n{font-family:var(--display);font-size:clamp(28px,3.4vw,42px);line-height:1;
+  color:var(--ink);font-variant-numeric:tabular-nums}
+.wb-ocena--glowna .wb-ocena-n{color:var(--green);font-size:clamp(38px,4.6vw,58px)}
+.wb-ocena-l{font-size:13.5px;line-height:1.45;color:var(--muted)}
+.wb-metod{margin:clamp(20px,2.4vw,28px) 0 0;font-size:13.5px;line-height:1.6;
+  color:var(--muted);max-width:78ch}
+.wb-glosy--para{grid-template-columns:repeat(2,minmax(0,1fr))}
+.wb-warsztat{margin-top:clamp(44px,5vw,72px);padding-top:clamp(28px,3vw,38px);border-top:1px solid var(--line)}
+.wb-warsztat .wb-glosy{margin-top:18px}
+@media(max-width:900px){
+  .wb-oceny{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+  .wb-glosy--para{grid-template-columns:minmax(0,1fr)}
+}
