@@ -13,84 +13,138 @@
 <meta property="og:title" content="Webinar: jak zaprojektować głęboki warsztat">
 <meta property="og:description" content="Dwa terminy na żywo we wtorki o 19:00, dla nieobecnych nagranie. Łuk doświadczenia, silne stany, bezpieczeństwo i ekonomia wydarzenia.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://piotrmatejuk.com/webinar/sala.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="/webinar/sala.webp">
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/group-facilitation/gfp.css">
 <link rel="stylesheet" href="/consent.css">
-<script src="/consent.js" defer></script>
 <link rel="stylesheet" href="/webinar/webinar.css">
+<script src="/consent.js" defer></script>
 </head>
 <body>
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="/group-facilitation">PIOTR MATEJUK<span class="brand-sub">Group Facilitation Program™</span></a>
+    <div class="topbar-r"><a href="#zapis" class="btn btn--primary">Zapisz się <span class="arrow">→</span></a></div>
+  </div>
+</header>
+
 <main>
-  <section class="wb-hero">
-    <div class="wb-wrap">
-      <p class="wb-eyebrow">Bezpłatny webinar na żywo</p>
-      <h1>Jak zaprojektować głęboki warsztat, który jest bezpieczny, spójny i&nbsp;rentowny</h1>
-      <p class="wb-lede">Dziewięćdziesiąt minut o tym, co dzieje się w głowie osoby, która trzyma salę. Bez teorii z podręcznika i bez ezoterycznego bełkotu, za to z rzeczami, których nie da się podejrzeć, siedząc po stronie uczestnika.</p>
-      <p class="wb-dates-inline">8 i 29 września, wtorki o 19:00</p>
-    </div>
-  </section>
-
-  <section class="wb-body">
-    <div class="wb-wrap wb-grid">
-
-      <div class="wb-col">
-        <h2>Co omawiam</h2>
-        <ol class="wb-list">
-          <li><b>Łuk doświadczenia.</b> Dlaczego warsztat nie jest zestawem ćwiczeń i jak zaprojektować napięcie, żeby powstało tam, gdzie go potrzebujesz.</li>
-          <li><b>Praca z silnymi stanami.</b> Gdzie przebiega granica między materiałem do pracy a sytuacją, którą trzeba zatrzymać, i po czym ją rozpoznać na sali.</li>
-          <li><b>Bezpieczeństwo i strona formalna.</b> Rozmowa przed wydarzeniem, zgody, zakres odpowiedzialności. Co musi być ustalone, zanim przyjmiesz pierwszą osobę.</li>
-          <li><b>Ekonomia wydarzenia.</b> Ile realnie kosztuje retreat, gdzie ucieka marża i dlaczego dobre warsztaty bywają deficytowe.</li>
-        </ol>
-        <p class="wb-note">Na końcu zostawiam czas na pytania i to jest zwykle najlepsza część, bo pytania idą prosto z sali. Jeśli o tej porze nie dasz rady, zaznacz to przy zapisie, a po spotkaniu przyślę Ci nagranie. Bez udawania transmisji na żywo, po prostu nagranie.</p>
-      </div>
-
-      <div class="wb-col">
-        <div class="wb-card" id="zapis">
-          <h2>Wybierz termin</h2>
-          <form id="wbForm" novalidate>
-            <fieldset class="wb-dates">
-              <legend>Dwa spotkania na żywo, oba we wtorki o 19:00</legend>
-              <label class="wb-date"><input type="radio" name="termin" value="2026-09-08" checked>
-                <span><b>8 września</b><small>wtorek, 19:00, na żywo</small></span></label>
-              <label class="wb-date"><input type="radio" name="termin" value="2026-09-29">
-                <span><b>29 września</b><small>wtorek, 19:00, na żywo</small></span></label>
-              <label class="wb-date wb-date--rec"><input type="radio" name="termin" value="nagranie">
-                <span><b>Nie mogę o tej porze</b><small>przyślij mi nagranie</small></span></label>
-            </fieldset>
-
-            <label for="wb_imie">Imię <span class="wb-req">*</span></label>
-            <input type="text" id="wb_imie" name="imie" required autocomplete="given-name" maxlength="80">
-
-            <label for="wb_email">E-mail <span class="wb-req">*</span></label>
-            <input type="email" id="wb_email" name="email" required autocomplete="email" maxlength="160">
-
-            <div class="wb-hp" aria-hidden="true">
-              <label for="wb_firma">Firma</label>
-              <input type="text" id="wb_firma" name="firma" tabindex="-1" autocomplete="off">
-            </div>
-
-            <p class="wb-msg" id="wbErr" role="alert" aria-live="assertive"></p>
-            <button type="submit" class="wb-btn" id="wbSubmit">Zapisz mnie na webinar</button>
-            <p class="wb-consent">Zapisując się, zgadzasz się na kontakt mailowy w sprawie tego webinaru i kursu. Możesz się wypisać w każdej chwili.</p>
-          </form>
-
-          <div class="wb-ok" id="wbOk" role="status" aria-live="polite" hidden>
-            <p class="wb-tick" aria-hidden="true">✓</p>
-            <h3>Jesteś zapisany</h3>
-            <p id="wbOkTermin"></p>
-            <p class="wb-note">Link do spotkania przyślę mailem dzień wcześniej.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap wb-hero-in">
+      <div class="wb-hero-text">
+        <h1>Jak zaprojektować głęboki warsztat, który jest bezpieczny, spójny i&nbsp;rentowny
+          <span class="hero-line2">Bezpłatne spotkanie na żywo, dwa terminy</span>
+        </h1>
+        <p class="hero-tag">Dziewięćdziesiąt minut o tym, co dzieje się w głowie osoby, która trzyma salę. Bez teorii z podręcznika i bez ezoterycznego bełkotu.</p>
+        <p class="hero-lede">Prowadzenie grupy wygląda z zewnątrz na talent. W praktyce jest rzemiosłem złożonym z decyzji podejmowanych w sekundach, i te decyzje da się rozpisać. <strong>Pokażę, jak to robię od trzynastu lat.</strong></p>
+        <div class="hero-ctas">
+          <a href="#zapis" class="btn btn--primary">Wybierz termin <span class="arrow">→</span></a>
+        </div>
+        <div class="hero-countdown">
+          <span class="hcd-label">Do pierwszego spotkania <b>(8.09.2026)</b> zostało:</span>
+          <div class="countdown" data-deadline="2026-09-08T19:00:00+02:00">
+            <div class="cd-unit"><span class="cd-n" data-cd="d">—</span><span class="cd-l">dni</span></div>
+            <div class="cd-unit"><span class="cd-n" data-cd="h">—</span><span class="cd-l">godz</span></div>
+            <div class="cd-unit"><span class="cd-n" data-cd="m">—</span><span class="cd-l">min</span></div>
+            <div class="cd-unit"><span class="cd-n" data-cd="s">—</span><span class="cd-l">sek</span></div>
           </div>
         </div>
       </div>
-
+      <figure class="wb-hero-photo">
+        <img src="/webinar/sala.webp" alt="Uczestnicy warsztatu pracujący w sali, rozstawieni na kartkach na podłodze" width="680" height="510" fetchpriority="high">
+        <figcaption>Warsztat INNERWORK, jedna z blisko trzydziestu edycji</figcaption>
+      </figure>
     </div>
   </section>
 
-  <section class="wb-foot">
-    <div class="wb-wrap">
-      <p>Prowadzi <b>Piotr Matejuk</b>, hipnoterapeuta i terapeuta psychodeliczny. Warsztaty i retreaty prowadzi od trzynastu lat, między innymi blisko trzydzieści edycji autorskiego warsztatu INNERWORK.</p>
-      <p><a href="/group-facilitation">Zobacz kurs Group Facilitation Program →</a></p>
+  <!-- CO OMAWIAM -->
+  <section class="section band-warm">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><h2>Co omawiam</h2></div>
+        <p class="lede">Cztery rzeczy, które decydują o tym, czy warsztat trzyma się kupy, a które najtrudniej podejrzeć, siedząc po stronie uczestnika.</p>
+      </div>
+      <div class="wb-points reveal">
+        <div class="wb-point">
+          <h3>Łuk doświadczenia</h3>
+          <p>Dlaczego warsztat nie jest zestawem ćwiczeń i jak zaprojektować napięcie, żeby kulminacja wypadła tam, gdzie jej potrzebujesz, a nie przypadkiem w połowie dnia.</p>
+        </div>
+        <div class="wb-point">
+          <h3>Praca z silnymi stanami</h3>
+          <p>Gdzie przebiega granica między materiałem do pracy a sytuacją, którą trzeba zatrzymać, i po czym rozpoznać jedno od drugiego, mając na sali dwadzieścia osób.</p>
+        </div>
+        <div class="wb-point">
+          <h3>Bezpieczeństwo i strona formalna</h3>
+          <p>Rozmowa przed wydarzeniem, zgody, zakres odpowiedzialności. Co musi być ustalone, zanim przyjmiesz pierwszą osobę, i co robić, kiedy coś jednak się wydarzy.</p>
+        </div>
+        <div class="wb-point">
+          <h3>Ekonomia wydarzenia</h3>
+          <p>Ile realnie kosztuje retreat, gdzie ucieka marża i dlaczego dobre warsztaty potrafią być deficytowe, mimo że sala była pełna.</p>
+        </div>
+      </div>
+      <p class="wb-after reveal">Na końcu zostawiam czas na pytania i to jest zwykle najlepsza część, bo pytania idą prosto z sali.</p>
+    </div>
+  </section>
+
+  <!-- ZAPIS -->
+  <section class="section band-plain" id="zapis">
+    <div class="wrap wb-signup">
+      <div class="wb-signup-side reveal">
+        <h2>Wybierz termin</h2>
+        <p class="lede">Dwa spotkania na żywo, oba we wtorki o 19:00. Prowadzę je osobiście na Google Meet.</p>
+        <p class="wb-side-note">Jeśli o tej porze nie dasz rady, zaznacz trzecią opcję, a po spotkaniu przyślę Ci nagranie. Bez udawania transmisji na żywo, po prostu nagranie.</p>
+        <div class="wb-host">
+          <img src="/webinar/prowadzacy.webp" alt="Piotr Matejuk" width="96" height="96">
+          <p><b>Piotr Matejuk</b><br>Hipnoterapeuta i terapeuta psychodeliczny. Warsztaty i retreaty prowadzi od trzynastu lat, w tym blisko trzydzieści edycji autorskiego INNERWORK.</p>
+        </div>
+      </div>
+
+      <div class="wb-card reveal">
+        <form id="wbForm" novalidate>
+          <fieldset class="wb-dates">
+            <legend>Termin</legend>
+            <label class="wb-date"><input type="radio" name="termin" value="2026-09-08" checked>
+              <span class="wb-date-t"><b>8 września</b><small>wtorek, 19:00 · na żywo</small></span></label>
+            <label class="wb-date"><input type="radio" name="termin" value="2026-09-29">
+              <span class="wb-date-t"><b>29 września</b><small>wtorek, 19:00 · na żywo</small></span></label>
+            <label class="wb-date wb-date--rec"><input type="radio" name="termin" value="nagranie">
+              <span class="wb-date-t"><b>Nie mogę o tej porze</b><small>przyślij mi nagranie</small></span></label>
+          </fieldset>
+
+          <label for="wb_imie">Imię <span class="wb-req">*</span></label>
+          <input type="text" id="wb_imie" name="imie" required autocomplete="given-name" maxlength="80">
+
+          <label for="wb_email">E-mail <span class="wb-req">*</span></label>
+          <input type="email" id="wb_email" name="email" required autocomplete="email" maxlength="160">
+
+          <div class="wb-hp" aria-hidden="true">
+            <label for="wb_firma">Firma</label>
+            <input type="text" id="wb_firma" name="firma" tabindex="-1" autocomplete="off">
+          </div>
+
+          <p class="wb-msg" id="wbErr" role="alert" aria-live="assertive"></p>
+          <button type="submit" class="btn btn--primary btn--block" id="wbSubmit">Zapisz mnie na webinar <span class="arrow">→</span></button>
+          <p class="wb-consent">Zapisując się, zgadzasz się na kontakt mailowy w sprawie tego webinaru i kursu. Wypisujesz się jednym kliknięciem.</p>
+        </form>
+
+        <div class="wb-ok" id="wbOk" role="status" aria-live="polite" hidden>
+          <h3>Jesteś zapisany</h3>
+          <p id="wbOkTermin"></p>
+          <p class="wb-side-note">Link do spotkania przyślę mailem dzień wcześniej.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STOPKA -->
+  <section class="section section--tight band-warm">
+    <div class="wrap wb-foot reveal">
+      <p>Webinar jest bezpłatny i nie trzeba po nim niczego kupować. Jeśli po spotkaniu zechcesz wejść głębiej, prowadzę dziesięciotygodniowy kurs o prowadzeniu warsztatów i retreatów.</p>
+      <a href="/group-facilitation" class="btn btn--ghost">Zobacz Group Facilitation Program <span class="arrow">→</span></a>
     </div>
   </section>
 </main>
