@@ -74,3 +74,44 @@ html{caret-color:var(--green)}
   .wb-hero-in,.wb-signup{grid-template-columns:minmax(0,1fr)}
   .wb-point{grid-template-columns:minmax(0,1fr);gap:8px}
 }
+
+/* ---------- kto prowadzi ---------- */
+.wb-bio{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1fr);
+  gap:clamp(28px,4vw,56px);align-items:start}
+.wb-bio-foto{margin:0}
+.wb-bio-foto img{display:block;width:100%;height:auto;object-fit:cover}
+.wb-bio-tresc h2{margin:0 0 16px}
+.wb-cred{margin:clamp(24px,3vw,32px) 0 0;padding:0;list-style:none;display:grid;gap:0;
+  border-top:1px solid var(--line)}
+.wb-cred li{padding-block:13px;border-bottom:1px solid var(--line-soft);
+  font-size:16px;line-height:1.6;color:var(--body)}
+.wb-cred b{color:var(--ink);font-weight:600}
+.wb-afil{margin-top:clamp(26px,3vw,34px)}
+.wb-afil-lab{display:block;margin-bottom:14px;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted)}
+.wb-afil-rzad,.wb-media-rzad{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(18px,2.6vw,34px)}
+.wb-afil-rzad img{height:52px;width:auto;opacity:.85;filter:grayscale(1);
+  mix-blend-mode:multiply;transition:opacity .15s ease,filter .15s ease}
+.wb-afil-rzad img:hover,.wb-media-rzad img:hover{opacity:1;filter:none}
+.wb-media{margin-top:clamp(44px,5vw,72px);padding-top:clamp(28px,3vw,38px);border-top:1px solid var(--line)}
+.wb-media-rzad img{height:40px;width:auto;opacity:.8;filter:grayscale(1);
+  mix-blend-mode:multiply;transition:opacity .15s ease,filter .15s ease}
+
+/* ---------- glosy ---------- */
+.wb-glosy{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(24px,3.5vw,48px);margin-top:clamp(28px,3.5vw,44px)}
+.wb-glos{margin:0;padding-top:22px;border-top:2px solid var(--green)}
+.wb-glos blockquote{margin:0 0 14px;font-size:clamp(17px,1.8vw,20px);line-height:1.5;
+  color:var(--ink);text-wrap:pretty}
+.wb-glos blockquote::before{content:"„"}
+.wb-glos blockquote::after{content:"”"}
+.wb-glos figcaption{font-size:14px;color:var(--muted)}
+.wb-glos figcaption b{color:var(--ink);font-weight:600}
+.wb-glosy-note{margin-top:clamp(26px,3vw,36px);font-size:14.5px;color:var(--muted);max-width:62ch}
+.wb-glosy-note a{color:var(--green)}
+
+@media(max-width:900px){
+  .wb-bio{grid-template-columns:minmax(0,1fr)}
+  .wb-bio-foto{max-width:320px}
+  .wb-glosy{grid-template-columns:minmax(0,1fr)}
+}
