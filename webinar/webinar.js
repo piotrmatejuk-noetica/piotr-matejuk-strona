@@ -28,6 +28,30 @@
   }
   if (document.querySelector('.countdown')) { tick(); setInterval(tick, 1000); }
 
+  /* UTM-y i identyfikatory kliknięcia z reklamy.
+     Zapisujemy w sessionStorage, żeby przetrwały przejście po stronie
+     (ktoś może najpierw zajrzeć na stronę kursu, a dopiero potem wrócić tutaj). */
+  var UTM = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
+  var MAGAZYN = 'pm_utm';
+
+  function zapamietajUtm() {
+    var q = new URLSearchParams(location.search);
+    var zebrane = {};
+    UTM.forEach(function (k) { var v = q.get(k); if (v) zebrane[k] = v.slice(0, 120); });
+    var fbclid = q.get('fbclid');
+    if (fbclid) zebrane.fbclid = fbclid.slice(0, 250);
+    if (!Object.keys(zebrane).length) {
+      try { return JSON.parse(sessionStorage.getItem(MAGAZYN)) || {}; } catch (e) { return {}; }
+    }
+    try { sessionStorage.setItem(MAGAZYN, JSON.stringify(zebrane)); } catch (e) { /* tryb prywatny */ }
+    return zebrane;
+  }
+
+  function ciastko(nazwa) {
+    var m = document.cookie.match(new RegExp('(^|;\\s*)' + nazwa + '=([^;]*)'));
+    return m ? decodeURIComponent(m[2]) : '';
+  }
+
   /* formularz */
   var form = document.getElementById('wbForm');
   if (!form) return;
@@ -54,11 +78,19 @@
       oznacz(email, true); err.textContent = 'Podaj poprawny adres e-mail.'; email.focus(); return;
     }
 
+    var utmy = zapamietajUtm();
+    var fbc = ciastko('_fbc');
+    if (!fbc && utmy.fbclid) fbc = 'fb.1.' + Date.now() + '.' + utmy.fbclid;
+
     var dane = {
       imie: imie.value.trim(), email: email.value.trim(),
       termin: (form.querySelector('input[name="termin"]:checked') || {}).value,
-      firma: document.getElementById('wb_firma').value
+      firma: document.getElementById('wb_firma').value,
+      strona: location.href.split('#')[0],
+      fbp: ciastko('_fbp'),
+      fbc: fbc
     };
+    UTM.forEach(function (k) { if (utmy[k]) dane[k] = utmy[k]; });
 
     btn.disabled = true;
     var etykieta = btn.innerHTML;
@@ -73,6 +105,14 @@
         ? 'Nagranie przyślę zaraz po spotkaniu 8 września.'
         : 'Termin: ' + (d.termin || '');
       form.hidden = true; ok.hidden = false;
+
+      /* Lead dopiero po potwierdzonym zapisie w MailerLite, nie po kliknięciu.
+         eventID jest ten sam co po stronie serwera, więc Meta nie liczy dwa razy.
+         Bez zgody na cookie window.fbq nie istnieje i zdarzenie zgłasza sam serwer. */
+      if (window.fbq) {
+        window.fbq('track', 'Lead', { content_name: 'Webinar GFP' },
+          d.eventId ? { eventID: d.eventId } : undefined);
+      }
     } catch (ex) {
       err.textContent = (ex && ex.message ? ex.message : 'Nie udało się zapisać.') +
         ' Możesz też napisać na kontakt@psychedelictherapy.pl.';
