@@ -2,7 +2,7 @@
 // Strona: piotrmatejuk.com/rozmowa
 //
 // Robi trzy rzeczy, w takiej kolejności:
-// 1. dopisuje osobę do grup MailerLite (rozmowa + wspólna grupa kampanii),
+// 1. dopisuje osobę do grupy MailerLite „GFP — rozmowa kwalifikacyjna",
 // 2. wysyła powiadomienie do zespołu, żeby ktoś realnie oddzwonił,
 // 3. zgłasza konwersję do Meta przez Conversions API.
 //
@@ -13,8 +13,11 @@
 
 const crypto = require('crypto');
 
-const GRUPA_ROZMOWA = '198035846218122421';      // GFP — rozmowa kwalifikacyjna
-const GRUPA_ZAINTERESOWANI = '196613403430618530'; // GFP — zainteresowani prowadzeniem
+// Wyłącznie ta jedna grupa. Wspólna grupa „GFP — zainteresowani prowadzeniem"
+// jest wyzwalaczem włączonej automatyzacji „GFP — potwierdzenie zapisu na
+// webinar", więc dopisanie do niej wysłałoby osobie proszącej o rozmowę mail
+// dziękujący za zapis na webinar. Sprawdzone realnym zgłoszeniem testowym.
+const GRUPA_ROZMOWA = '198035846218122421'; // GFP — rozmowa kwalifikacyjna
 
 // Kto dostaje powiadomienie o nowym zgłoszeniu. Rozmowy prowadzą Magda i Ania,
 // więc ich adresy trzeba tu dopisać, żeby nie czekały na przekazanie od Piotra.
@@ -289,7 +292,7 @@ module.exports = async (req, res) => {
       body: JSON.stringify({
         email,
         fields,
-        groups: [GRUPA_ROZMOWA, GRUPA_ZAINTERESOWANI],
+        groups: [GRUPA_ROZMOWA],
       }),
     });
     if (!r.ok) {
