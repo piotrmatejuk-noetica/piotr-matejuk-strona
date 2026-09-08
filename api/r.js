@@ -12,6 +12,7 @@ const CELE = {
   webinar: 'https://piotrmatejuk.com/webinar',
   kurs: 'https://piotrmatejuk.com/group-facilitation',
   opinie: 'https://piotrmatejuk.com/group-facilitation#opinie',
+  rozmowa: 'https://piotrmatejuk.com/rozmowa',
 };
 
 module.exports = async (req, res) => {

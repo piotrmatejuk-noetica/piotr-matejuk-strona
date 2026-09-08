@@ -31,6 +31,19 @@
     return zebrane;
   }
 
+  /* Z którego wariantu cennika ktoś przyszedł. Strona kursu linkuje tu
+     z ?wariant=rdzen albo ?wariant=premium, więc zespół wie przed telefonem,
+     czy rozmowa dotyczy 3970 czy 6900 zł. Zapamiętane na czas sesji, bo
+     odświeżenie strony gubi parametr. */
+  function wariant() {
+    var v = new URLSearchParams(location.search).get('wariant') || '';
+    if (v === 'rdzen' || v === 'premium') {
+      try { sessionStorage.setItem('gfp_wariant', v); } catch (e) { /* tryb prywatny */ }
+      return v;
+    }
+    try { return sessionStorage.getItem('gfp_wariant') || ''; } catch (e) { return ''; }
+  }
+
   function ciastko(nazwa) {
     var m = document.cookie.match(new RegExp('(^|;\\s*)' + nazwa + '=([^;]*)'));
     return m ? decodeURIComponent(m[2]) : '';
@@ -143,6 +156,7 @@
       prowadzi: document.getElementById('rz_prowadzi').value.trim(),
       przeszkoda: document.getElementById('rz_przeszkoda').value.trim(),
       zgoda: 'tak',
+      wariant: wariant(),
       firma: document.getElementById('rz_firma').value,
       strona: location.href.split('#')[0],
       zrodlo: zrodloWizyty(utmy),

@@ -33,6 +33,7 @@ const UTM_POLA = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
 
 // Dopuszczalne odpowiedzi o dostępność. Wartość spoza listy jest odrzucana,
 // żeby do powiadomienia nie dało się wstrzyknąć dowolnego tekstu.
+const WARIANTY = { rdzen: 'rdzeń, 3970 zł', premium: 'premium, 6900 zł' };
 const DNI = { robocze: 'dni robocze', weekend: 'weekend' };
 const PORY = {
   rano: 'rano (8:00–12:00)',
@@ -156,7 +157,7 @@ async function wyslijZdarzenie({ email, imie, nazwisko, telefon, eventId, eventS
   }));
 }
 
-async function powiadom({ imie, nazwisko, email, telefon, dostepnosc, prowadzi, przeszkoda, zrodlo }) {
+async function powiadom({ imie, nazwisko, email, telefon, dostepnosc, wariant, prowadzi, przeszkoda, zrodlo }) {
   const gatewayUrl = process.env.MATEJUK_GATEWAY_URL;
   const gatewayToken = process.env.MATEJUK_GATEWAY_TOKEN;
   if (!gatewayUrl || !gatewayToken) {
@@ -173,6 +174,7 @@ async function powiadom({ imie, nazwisko, email, telefon, dostepnosc, prowadzi, 
     `Telefon: ${telefon}`,
     `E-mail: ${email}`,
     `Kiedy dzwonić: ${dostepnosc || 'nie podano, dowolna pora'}`,
+    `Wariant, z którego przyszedł: ${wariant || 'nie wiadomo, wejście spoza cennika'}`,
     '',
     'Co dziś prowadzi albo chce prowadzić:',
     prowadzi || '(nie wypełniono)',
@@ -319,7 +321,9 @@ module.exports = async (req, res) => {
   // Od tego miejsca osoba jest już zapisana. Cokolwiek pójdzie nie tak niżej,
   // zgłoszenie jest bezpieczne i odpowiadamy sukcesem.
   await powiadom({
-    imie, nazwisko, email, telefon, dostepnosc, prowadzi, przeszkoda,
+    imie, nazwisko, email, telefon, dostepnosc,
+    wariant: WARIANTY[clean(body.wariant, 20)] || '',
+    prowadzi, przeszkoda,
     zrodlo: clean(body.zrodlo, 200),
   });
 
