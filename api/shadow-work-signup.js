@@ -56,7 +56,7 @@ module.exports = async (req, res) => {
   const gatewayToken = process.env.MATEJUK_GATEWAY_TOKEN;
   let emailPromise = Promise.resolve();
   if (gatewayUrl && gatewayToken) {
-    const subject = `Zgłoszenie na Shadow Work · 26.09–2.10.2026 — ${name}`;
+    const subject = `Zgłoszenie na Shadow Work · 2–8.11.2026 — ${name}`;
     const message = [
       `Zgłoszenie z formularza piotrmatejuk.com/shadow-work`,
       ``,
