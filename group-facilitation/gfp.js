@@ -154,6 +154,7 @@
       err = document.getElementById('signupErr'),
       btn = document.getElementById('signupSubmit'),
       ENDPOINT = '/api/gfp-signup';
+    var formStartedAt = Date.now();
 
     var KEY = 'gfp_zgloszenie', lastTrigger = null;
 
@@ -286,6 +287,7 @@
       err.className = 'signup-msg'; err.textContent = '';
       var fd = new FormData(form), data = {};
       fd.forEach(function (v, k) { data[k] = String(v); });
+      data.form_started_at = formStartedAt;
       ['imie', 'nazwisko', 'email', 'telefon'].forEach(function (k) { data[k] = (data[k] || '').trim(); });
 
       var blad = pierwszyBlad();

@@ -1,4 +1,5 @@
 const RECIPIENTS = ['piotr@sacrum.life', 'kontakt@psychedelictherapy.pl'];
+const { protect } = require('./_antispam');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -17,7 +18,9 @@ module.exports = async (req, res) => {
   }
   body = body || {};
 
-  const email = String(body.email || '').trim().slice(0, 320);
+  if (protect(req, res, body, { form: 'book-signup', limit: 4 })) return;
+
+  const email = String(body.email || '').trim().toLowerCase().slice(0, 320);
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
     res.status(400).json({ error: 'invalid_email' });
     return;

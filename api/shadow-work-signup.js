@@ -1,5 +1,6 @@
 const RECIPIENT = 'kontakt@psychedelictherapy.pl';
 const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/14141805/46o768a/';
+const { protect } = require('./_antispam');
 
 function escapeText(value) {
   return String(value || '').slice(0, 5000);
@@ -21,13 +22,27 @@ module.exports = async (req, res) => {
   }
   body = body || {};
 
+  if (protect(req, res, body, {
+    form: 'shadow-work-signup',
+    limit: 5,
+    textFields: ['name', 'motivation'],
+  })) return;
+
   const name = escapeText(body.name).trim();
-  const email = escapeText(body.email).trim();
+  const email = escapeText(body.email).trim().toLowerCase();
   const phone = escapeText(body.phone).trim();
   const motivation = escapeText(body.motivation).trim();
 
   if (!name || !email || !phone || !motivation) {
     res.status(400).json({ error: 'missing_fields' });
+    return;
+  }
+  if (!/^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$/.test(email)) {
+    res.status(400).json({ error: 'invalid_email' });
+    return;
+  }
+  if ((phone.match(/[0-9]/g) || []).length < 9) {
+    res.status(400).json({ error: 'invalid_phone' });
     return;
   }
 

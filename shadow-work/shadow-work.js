@@ -193,6 +193,7 @@
     var status = document.getElementById("application-status");
     var defaultLabel = submitBtn ? submitBtn.querySelector("span").textContent : "";
     var sent = false;
+    var formStartedAt = Date.now();
 
     form.addEventListener("submit", function (event) {
       event.preventDefault();
@@ -212,7 +213,9 @@
           name: data.get("name"),
           email: data.get("email"),
           phone: data.get("phone"),
-          motivation: data.get("motivation")
+          motivation: data.get("motivation"),
+          website: data.get("website"),
+          form_started_at: formStartedAt
         })
       })
         .then(function (r) { return r.json().then(function (json) { return { ok: r.ok, json: json }; }); })

@@ -1,4 +1,6 @@
 const RECIPIENTS = ['kontakt@psychedelictherapy.pl'];
+const { protect } = require('./_antispam');
+const SUBJECTS = new Set(['Współpraca', 'Media i wystąpienia', 'Szkolenia', 'Mentoring', 'Inne']);
 
 function escapeText(value) {
   return String(value || '').slice(0, 5000);
@@ -21,13 +23,24 @@ module.exports = async (req, res) => {
   }
   body = body || {};
 
+  if (protect(req, res, body, {
+    form: 'contact',
+    limit: 4,
+    textFields: ['imie', 'temat', 'wiadomosc'],
+  })) return;
+
   const imie = escapeText(body.imie).trim();
-  const email = escapeText(body.email).trim();
-  const temat = escapeText(body.temat).trim() || 'Inne';
+  const email = escapeText(body.email).trim().toLowerCase();
+  const requestedSubject = escapeText(body.temat).trim();
+  const temat = SUBJECTS.has(requestedSubject) ? requestedSubject : 'Inne';
   const wiadomosc = escapeText(body.wiadomosc).trim();
 
   if (!imie || !email || !wiadomosc) {
     res.status(400).json({ error: 'missing_fields' });
+    return;
+  }
+  if (!/^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$/.test(email)) {
+    res.status(400).json({ error: 'invalid_email' });
     return;
   }
 

@@ -12,6 +12,7 @@
 // o ponowną próbę.
 
 const crypto = require('crypto');
+const { protect } = require('./_antispam');
 
 // Wyłącznie ta jedna grupa. Wspólna grupa „GFP — zainteresowani prowadzeniem"
 // jest wyzwalaczem włączonej automatyzacji „GFP — potwierdzenie zapisu na
@@ -231,11 +232,11 @@ module.exports = async (req, res) => {
   }
   body = body || {};
 
-  // honeypot — bot wypełnia ukryte pole "firma"
-  if (clean(body.firma)) {
-    res.status(200).json({ ok: true });
-    return;
-  }
+  if (protect(req, res, body, {
+    form: 'rozmowa',
+    limit: 5,
+    textFields: ['imie', 'nazwisko', 'prowadzi', 'przeszkoda'],
+  })) return;
 
   const imie = clean(body.imie, 80);
   const nazwisko = clean(body.nazwisko, 80);

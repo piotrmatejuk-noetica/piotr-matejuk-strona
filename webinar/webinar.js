@@ -55,6 +55,7 @@
   /* formularz */
   var form = document.getElementById('wbForm');
   if (!form) return;
+  var formStartedAt = Date.now();
   var err = document.getElementById('wbErr'),
       btn = document.getElementById('wbSubmit'),
       ok = document.getElementById('wbOk'),
@@ -86,6 +87,7 @@
       imie: imie.value.trim(), email: email.value.trim(),
       termin: (form.querySelector('input[name="termin"]:checked') || {}).value,
       firma: document.getElementById('wb_firma').value,
+      form_started_at: formStartedAt,
       strona: location.href.split('#')[0],
       fbp: ciastko('_fbp'),
       fbc: fbc

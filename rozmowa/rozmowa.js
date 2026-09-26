@@ -67,6 +67,7 @@
 
   var form = document.getElementById('rzForm');
   if (!form) return;
+  var formStartedAt = Date.now();
   var err = document.getElementById('rzErr'),
       btn = document.getElementById('rzSubmit'),
       ok = document.getElementById('rzOk');
@@ -158,6 +159,7 @@
       zgoda: 'tak',
       wariant: wariant(),
       firma: document.getElementById('rz_firma').value,
+      form_started_at: formStartedAt,
       strona: location.href.split('#')[0],
       zrodlo: zrodloWizyty(utmy),
       fbp: ciastko('_fbp'),

@@ -1,4 +1,5 @@
 const RECIPIENTS = ['kontakt@psychedelictherapy.pl', 'piotr@sacrum.life'];
+const { protect } = require('./_antispam');
 
 function clean(value, max) {
   return String(value == null ? '' : value).slice(0, max || 3000).trim();
@@ -21,15 +22,15 @@ module.exports = async (req, res) => {
   }
   body = body || {};
 
-  // honeypot — bot wypełnia ukryte pole "firma"
-  if (clean(body.firma, 200)) {
-    res.status(200).json({ ok: true });
-    return;
-  }
+  if (protect(req, res, body, {
+    form: 'gfp-signup',
+    limit: 5,
+    textFields: ['imie', 'nazwisko', 'opis_pomyslu', 'zalezy', 'uniknac'],
+  })) return;
 
   const imie = clean(body.imie, 80);
   const nazwisko = clean(body.nazwisko, 80);
-  const email = clean(body.email, 160);
+  const email = clean(body.email, 160).toLowerCase();
   const telefon = clean(body.telefon, 40);
 
   if (!imie || !nazwisko || !email || !telefon) {

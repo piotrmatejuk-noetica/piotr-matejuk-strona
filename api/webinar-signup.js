@@ -9,6 +9,7 @@
 //   dostaje przeglądarka, więc Meta deduplikuje oba źródła.
 
 const crypto = require('crypto');
+const { protect } = require('./_antispam');
 
 // Dwa terminy na żywo plus opcja dla osób, które chcą wyłącznie nagranie.
 // Nagranie jest podawane WPROST jako nagranie — żadnego udawania transmisji na żywo.
@@ -161,11 +162,11 @@ module.exports = async (req, res) => {
   }
   body = body || {};
 
-  // honeypot — bot wypełnia ukryte pole "firma"
-  if (clean(body.firma)) {
-    res.status(200).json({ ok: true });
-    return;
-  }
+  if (protect(req, res, body, {
+    form: 'webinar-signup',
+    limit: 6,
+    textFields: ['imie'],
+  })) return;
 
   const imie = clean(body.imie, 80);
   const email = clean(body.email, 160).toLowerCase();
