@@ -47,7 +47,7 @@ function rateLimited(key, limit, now) {
   return current.count > limit;
 }
 
-function spamScore(req, body, fields) {
+function spamScore(req, body, fields, form) {
   const combined = fields.map((field) => text(body[field])).join('\n');
   const urls = combined.match(/(?:https?:\/\/|www\.|\b[a-z0-9-]+\.(?:com|net|org|io|xyz|top|site|online)\b)/gi) || [];
   let score = 0;
@@ -59,6 +59,13 @@ function spamScore(req, body, fields) {
     score += 3;
   }
   if (/(.)\1{14,}/.test(combined)) score += 2;
+  // Formularz kontaktowy dostaje też filtr na gotowe, bezosobowe szablony,
+  // które w praktyce pojawiały się jako spam mimo poprawnego e-maila i originu.
+  // Długi, konkretny opis nie jest tym objęty — warunek dotyczy krótkiej treści.
+  if (form === 'contact' && text(body.wiadomosc, 500).length <= 240
+    && /(?:wi[eę]cej\s+informacji|prosz[eę]\s+o\s+(?:kontakt|informacj|odpowied)|kontakt\s+e[-\s]?mail|odpisz\s+na\s+ten\s+e[-\s]?mail|piotr\s+matejuk)/i.test(text(body.wiadomosc, 500))) {
+    score += 4;
+  }
   if (!text(req.headers['user-agent'], 500)) score += 1;
   if (!text(req.headers['accept-language'], 200)) score += 1;
   return score;
@@ -119,7 +126,7 @@ function protect(req, res, body, options = {}) {
     return reject(res, 429, { error: 'too_many_requests' });
   }
 
-  if (spamScore(req, body, fields) >= 3) {
+  if (spamScore(req, body, fields, form) >= 3) {
     return reject(res, 200, { ok: true });
   }
 

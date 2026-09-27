@@ -58,6 +58,11 @@ assert.equal(result.handled, true);
 assert.equal(result.res.statusCode, 200);
 
 resetForTests();
+result = check(request(), { email: 'nwiqigdnl486@hotmail.com', wiadomosc: 'Proszę o więcej informacji i kontakt e-mailowy — piotr matejuk.' }, { form: 'contact', textFields: ['imie', 'temat', 'wiadomosc'] });
+assert.equal(result.handled, true);
+assert.equal(result.res.statusCode, 200);
+
+resetForTests();
 result = check(request(), { email: 'jan@example.com', message: 'Normalna wiadomość', form_started_at: Date.now() - 500 });
 assert.equal(result.handled, true);
 assert.equal(result.res.statusCode, 200);
